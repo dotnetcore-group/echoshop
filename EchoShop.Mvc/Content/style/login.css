@@ -1,0 +1,57 @@
+.m-bdbg {
+    width: 100%;
+    height: 600px;
+    background: url(http://yanxuan.nosdn.127.net/6c20940c7b36612b0ed4d7b0a8a4aafe.jpg) center no-repeat;
+}
+.m-login-Page {
+    position: absolute;
+    top: 83px;
+    width: 386px;
+    left: 703px;
+    height: 460px;
+    background: #fff;
+	border: 0.3px solid #e8e8e8;
+    /*
+    border-radius: 3px;
+    -webkit-box-shadow: #a7a7a7 0px 0px 10px;
+	-moz-box-shadow: #a7a7a7 0px 0px 10px;
+	box-shadow: #a7a7a7 0px 0px 10px;*/
+	padding: 0px 40px;
+}
+.login-title{
+	line-height: 80px;
+	padding-left: 40px;
+}
+
+.m-container .inputbox {
+    width: 100%;
+    height: 36px;
+    border: 1px solid #e8e8e8;
+    line-height: 36px;
+    border-radius: 2px;
+}
+.u-logo {
+    float: left;
+    width: 29px;
+    text-align: center;
+    padding: 7px 0 7px 7px;
+    height: 24px;
+}
+.u-input {
+    position: relative;
+    float: left;
+    height: 100%;
+}
+
+.input {
+    font-size:14px;
+    padding-left:5px;
+    outline:none;
+    border:none;
+    width:100%;
+}
+
+.error {
+    display:block;
+    color:#d4282d
+}

@@ -1,0 +1,1053 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EchoShopModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="EchoShopModelStoreContainer">
+    <EntitySet Name="T_UserBaseInfoSet" EntityType="EchoShopModel.Store.T_UserBaseInfoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_UserDetailInfoSet" EntityType="EchoShopModel.Store.T_UserDetailInfoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DeliveryInfoSet" EntityType="EchoShopModel.Store.DeliveryInfoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_OrderInfoSet" EntityType="EchoShopModel.Store.T_OrderInfoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_OrderStatusSet" EntityType="EchoShopModel.Store.T_OrderStatusSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_CategorySet" EntityType="EchoShopModel.Store.T_CategorySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_ProductsSet" EntityType="EchoShopModel.Store.T_ProductsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_AdminSet" EntityType="EchoShopModel.Store.T_AdminSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_BrandSet" EntityType="EchoShopModel.Store.T_BrandSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_ProductAttrSet" EntityType="EchoShopModel.Store.T_ProductAttrSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_AttributesSet" EntityType="EchoShopModel.Store.T_AttributesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_AttrValueSet" EntityType="EchoShopModel.Store.T_AttrValueSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_FriendLinksSet" EntityType="EchoShopModel.Store.T_FriendLinksSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_FavoritesSet" EntityType="EchoShopModel.Store.T_FavoritesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_OrderInfoT_Attributes" EntityType="EchoShopModel.Store.T_OrderInfoT_Attributes" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="T_UserDetailInfoT_UserBaseInfo" Association="EchoShopModel.Store.T_UserDetailInfoT_UserBaseInfo">
+      <End Role="T_UserDetailInfo" EntitySet="T_UserDetailInfoSet" />
+      <End Role="T_UserBaseInfo" EntitySet="T_UserBaseInfoSet" />
+    </AssociationSet>
+    <AssociationSet Name="DeliveryInfoT_UserBaseInfo" Association="EchoShopModel.Store.DeliveryInfoT_UserBaseInfo">
+      <End Role="DeliveryInfo" EntitySet="DeliveryInfoSet" />
+      <End Role="T_UserBaseInfo" EntitySet="T_UserBaseInfoSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_OrderInfoT_UserBaseInfo" Association="EchoShopModel.Store.T_OrderInfoT_UserBaseInfo">
+      <End Role="T_OrderInfo" EntitySet="T_OrderInfoSet" />
+      <End Role="T_UserBaseInfo" EntitySet="T_UserBaseInfoSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_OrderInfoT_OrderStatus" Association="EchoShopModel.Store.T_OrderInfoT_OrderStatus">
+      <End Role="T_OrderInfo" EntitySet="T_OrderInfoSet" />
+      <End Role="T_OrderStatus" EntitySet="T_OrderStatusSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_GoodsT_Category" Association="EchoShopModel.Store.T_GoodsT_Category">
+      <End Role="T_Goods" EntitySet="T_ProductsSet" />
+      <End Role="T_Category" EntitySet="T_CategorySet" />
+    </AssociationSet>
+    <AssociationSet Name="T_OrderInfoT_Goods" Association="EchoShopModel.Store.T_OrderInfoT_Goods">
+      <End Role="T_OrderInfo" EntitySet="T_OrderInfoSet" />
+      <End Role="T_Goods" EntitySet="T_ProductsSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_GoodsT_Brand" Association="EchoShopModel.Store.T_GoodsT_Brand">
+      <End Role="T_Goods" EntitySet="T_ProductsSet" />
+      <End Role="T_Brand" EntitySet="T_BrandSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_ProductAttrT_Products" Association="EchoShopModel.Store.T_ProductAttrT_Products">
+      <End Role="T_ProductAttr" EntitySet="T_ProductAttrSet" />
+      <End Role="T_Products" EntitySet="T_ProductsSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_AttrValueT_Attributes" Association="EchoShopModel.Store.T_AttrValueT_Attributes">
+      <End Role="T_AttrValue" EntitySet="T_AttrValueSet" />
+      <End Role="T_Attributes" EntitySet="T_AttributesSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_AttributesT_ProductAttr" Association="EchoShopModel.Store.T_AttributesT_ProductAttr">
+      <End Role="T_Attributes" EntitySet="T_AttributesSet" />
+      <End Role="T_ProductAttr" EntitySet="T_ProductAttrSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_ProductAttrT_AttrValue" Association="EchoShopModel.Store.T_ProductAttrT_AttrValue">
+      <End Role="T_ProductAttr" EntitySet="T_ProductAttrSet" />
+      <End Role="T_AttrValue" EntitySet="T_AttrValueSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_OrderInfoT_Attributes_T_OrderInfo" Association="EchoShopModel.Store.FK_T_OrderInfoT_Attributes_T_OrderInfo">
+      <End Role="T_OrderInfo" EntitySet="T_OrderInfoSet" />
+      <End Role="T_OrderInfoT_Attributes" EntitySet="T_OrderInfoT_Attributes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_OrderInfoT_Attributes_T_Attributes" Association="EchoShopModel.Store.FK_T_OrderInfoT_Attributes_T_Attributes">
+      <End Role="T_Attributes" EntitySet="T_AttributesSet" />
+      <End Role="T_OrderInfoT_Attributes" EntitySet="T_OrderInfoT_Attributes" />
+    </AssociationSet>
+    <AssociationSet Name="T_FavoritesT_UserBaseInfo" Association="EchoShopModel.Store.T_FavoritesT_UserBaseInfo">
+      <End Role="T_Favorites" EntitySet="T_FavoritesSet" />
+      <End Role="T_UserBaseInfo" EntitySet="T_UserBaseInfoSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_ProductsT_Favorites" Association="EchoShopModel.Store.T_ProductsT_Favorites">
+      <End Role="T_Products" EntitySet="T_ProductsSet" />
+      <End Role="T_Favorites" EntitySet="T_FavoritesSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_OrderInfoDeliveryInfo" Association="EchoShopModel.Store.T_OrderInfoDeliveryInfo">
+      <End Role="T_OrderInfo" EntitySet="T_OrderInfoSet" />
+      <End Role="DeliveryInfo" EntitySet="DeliveryInfoSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="T_UserBaseInfoSet">
+    <Key>
+      <PropertyRef Name="F_UId" />
+    </Key>
+    <Property Name="F_UId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" DefaultValue="10000" />
+    <Property Name="F_UName" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="F_UPwd" Type="nchar" Nullable="false" MaxLength="32" />
+    <Property Name="F_UState" Type="bit" Nullable="false" DefaultValue="true" />
+    <Property Name="F_UCreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_UserDetailInfoSet">
+    <Key>
+      <PropertyRef Name="F_Id" />
+    </Key>
+    <Property Name="F_Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="F_UNickName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="F_UBirthday" Type="datetime" Nullable="true" />
+    <Property Name="F_USex" Type="nchar" Nullable="true" MaxLength="1" />
+    <Property Name="F_UTel" Type="nvarchar" Nullable="true" MaxLength="11" />
+    <Property Name="T_UserBaseInfo_F_UId" Type="int" DefaultValue="10000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DeliveryInfoSet">
+    <Key>
+      <PropertyRef Name="F_DId" />
+    </Key>
+    <Property Name="F_DId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="F_DConsignee" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="F_DAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="F_DTel" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="F_DIsDefault" Type="bit" Nullable="true" />
+    <Property Name="T_UserBaseInfo_F_UId" Type="int" DefaultValue="10000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_OrderInfoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="F_Quantity" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="F_UnitPrice" Type="real" Nullable="false" DefaultValue="0" />
+    <Property Name="T_UserBaseInfo_F_UId" Type="int" DefaultValue="10000" Nullable="false" />
+    <Property Name="T_OrderStatus_Id" Type="int" Nullable="false" />
+    <Property Name="T_Goods_F_Id" Type="int" Nullable="false" />
+    <Property Name="DeliveryInfo_F_DId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_OrderStatusSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatuName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_CategorySet">
+    <Key>
+      <PropertyRef Name="F_Id" />
+    </Key>
+    <Property Name="F_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="F_CategoryName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="F_OrderValue" Type="int" Nullable="true" />
+    <Property Name="F_Icon" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="F_ParentId" Type="int" Nullable="false" DefaultValue="0" />
+  </EntityType>
+  <EntityType Name="T_ProductsSet">
+    <Key>
+      <PropertyRef Name="F_Id" />
+    </Key>
+    <Property Name="F_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="F_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="F_Desc" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="F_OriginalPrice" Type="real" Nullable="false" DefaultValue="0" />
+    <Property Name="F_PresentPrice" Type="real" Nullable="false" DefaultValue="0" />
+    <Property Name="F_IsNew" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="F_IsHot" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="F_Img" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="F_AddDate" Type="datetime" Nullable="true" />
+    <Property Name="T_Category_F_Id" Type="int" Nullable="false" />
+    <Property Name="T_Brand_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_AdminSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="F_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="F_Pwd" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_BrandSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="F_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="F_Logo" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="T_ProductAttrSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Price" Type="real" Nullable="false" DefaultValue="0" />
+    <Property Name="T_Products_F_Id" Type="int" Nullable="false" />
+    <Property Name="T_Attributes_AttrId" Type="int" Nullable="false" />
+    <Property Name="T_AttrValue_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_AttributesSet">
+    <Key>
+      <PropertyRef Name="AttrId" />
+    </Key>
+    <Property Name="AttrId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttrName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_AttrValueSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="T_Attributes_AttrId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_FriendLinksSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Logo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" DefaultValue="0" />
+  </EntityType>
+  <EntityType Name="T_FavoritesSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AddDate" Type="datetime" Nullable="true" />
+    <Property Name="T_UserBaseInfo_F_UId" Type="int" DefaultValue="10000" Nullable="false" />
+    <Property Name="T_Products_F_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_OrderInfoT_Attributes">
+    <Key>
+      <PropertyRef Name="T_OrderInfo_Id" />
+      <PropertyRef Name="T_Attributes_AttrId" />
+    </Key>
+    <Property Name="T_OrderInfo_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="T_Attributes_AttrId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="T_UserDetailInfoT_UserBaseInfo">
+    <End Role="T_UserDetailInfo" Type="EchoShopModel.Store.T_UserDetailInfoSet" Multiplicity="*" />
+    <End Role="T_UserBaseInfo" Type="EchoShopModel.Store.T_UserBaseInfoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="T_UserBaseInfo">
+        <PropertyRef Name="F_UId" />
+      </Principal>
+      <Dependent Role="T_UserDetailInfo">
+        <PropertyRef Name="T_UserBaseInfo_F_UId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeliveryInfoT_UserBaseInfo">
+    <End Role="DeliveryInfo" Type="EchoShopModel.Store.DeliveryInfoSet" Multiplicity="*" />
+    <End Role="T_UserBaseInfo" Type="EchoShopModel.Store.T_UserBaseInfoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="T_UserBaseInfo">
+        <PropertyRef Name="F_UId" />
+      </Principal>
+      <Dependent Role="DeliveryInfo">
+        <PropertyRef Name="T_UserBaseInfo_F_UId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_OrderInfoT_UserBaseInfo">
+    <End Role="T_OrderInfo" Type="EchoShopModel.Store.T_OrderInfoSet" Multiplicity="*" />
+    <End Role="T_UserBaseInfo" Type="EchoShopModel.Store.T_UserBaseInfoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="T_UserBaseInfo">
+        <PropertyRef Name="F_UId" />
+      </Principal>
+      <Dependent Role="T_OrderInfo">
+        <PropertyRef Name="T_UserBaseInfo_F_UId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_OrderInfoT_OrderStatus">
+    <End Role="T_OrderInfo" Type="EchoShopModel.Store.T_OrderInfoSet" Multiplicity="*" />
+    <End Role="T_OrderStatus" Type="EchoShopModel.Store.T_OrderStatusSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="T_OrderStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_OrderInfo">
+        <PropertyRef Name="T_OrderStatus_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_GoodsT_Category">
+    <End Role="T_Goods" Type="EchoShopModel.Store.T_ProductsSet" Multiplicity="*" />
+    <End Role="T_Category" Type="EchoShopModel.Store.T_CategorySet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="T_Category">
+        <PropertyRef Name="F_Id" />
+      </Principal>
+      <Dependent Role="T_Goods">
+        <PropertyRef Name="T_Category_F_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_OrderInfoT_Goods">
+    <End Role="T_OrderInfo" Type="EchoShopModel.Store.T_OrderInfoSet" Multiplicity="*" />
+    <End Role="T_Goods" Type="EchoShopModel.Store.T_ProductsSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="T_Goods">
+        <PropertyRef Name="F_Id" />
+      </Principal>
+      <Dependent Role="T_OrderInfo">
+        <PropertyRef Name="T_Goods_F_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_GoodsT_Brand">
+    <End Role="T_Goods" Type="EchoShopModel.Store.T_ProductsSet" Multiplicity="*" />
+    <End Role="T_Brand" Type="EchoShopModel.Store.T_BrandSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="T_Brand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_Goods">
+        <PropertyRef Name="T_Brand_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_ProductAttrT_Products">
+    <End Role="T_ProductAttr" Type="EchoShopModel.Store.T_ProductAttrSet" Multiplicity="*" />
+    <End Role="T_Products" Type="EchoShopModel.Store.T_ProductsSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="T_Products">
+        <PropertyRef Name="F_Id" />
+      </Principal>
+      <Dependent Role="T_ProductAttr">
+        <PropertyRef Name="T_Products_F_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_AttrValueT_Attributes">
+    <End Role="T_AttrValue" Type="EchoShopModel.Store.T_AttrValueSet" Multiplicity="*" />
+    <End Role="T_Attributes" Type="EchoShopModel.Store.T_AttributesSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="T_Attributes">
+        <PropertyRef Name="AttrId" />
+      </Principal>
+      <Dependent Role="T_AttrValue">
+        <PropertyRef Name="T_Attributes_AttrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_AttributesT_ProductAttr">
+    <End Role="T_Attributes" Type="EchoShopModel.Store.T_AttributesSet" Multiplicity="1" />
+    <End Role="T_ProductAttr" Type="EchoShopModel.Store.T_ProductAttrSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Attributes">
+        <PropertyRef Name="AttrId" />
+      </Principal>
+      <Dependent Role="T_ProductAttr">
+        <PropertyRef Name="T_Attributes_AttrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_ProductAttrT_AttrValue">
+    <End Role="T_ProductAttr" Type="EchoShopModel.Store.T_ProductAttrSet" Multiplicity="*" />
+    <End Role="T_AttrValue" Type="EchoShopModel.Store.T_AttrValueSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="T_AttrValue">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_ProductAttr">
+        <PropertyRef Name="T_AttrValue_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_FavoritesT_UserBaseInfo">
+    <End Role="T_Favorites" Type="EchoShopModel.Store.T_FavoritesSet" Multiplicity="*" />
+    <End Role="T_UserBaseInfo" Type="EchoShopModel.Store.T_UserBaseInfoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="T_UserBaseInfo">
+        <PropertyRef Name="F_UId" />
+      </Principal>
+      <Dependent Role="T_Favorites">
+        <PropertyRef Name="T_UserBaseInfo_F_UId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_ProductsT_Favorites">
+    <End Role="T_Products" Type="EchoShopModel.Store.T_ProductsSet" Multiplicity="1" />
+    <End Role="T_Favorites" Type="EchoShopModel.Store.T_FavoritesSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Products">
+        <PropertyRef Name="F_Id" />
+      </Principal>
+      <Dependent Role="T_Favorites">
+        <PropertyRef Name="T_Products_F_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_OrderInfoDeliveryInfo">
+    <End Role="T_OrderInfo" Type="EchoShopModel.Store.T_OrderInfoSet" Multiplicity="*" />
+    <End Role="DeliveryInfo" Type="EchoShopModel.Store.DeliveryInfoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="DeliveryInfo">
+        <PropertyRef Name="F_DId" />
+      </Principal>
+      <Dependent Role="T_OrderInfo">
+        <PropertyRef Name="DeliveryInfo_F_DId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_OrderInfoT_Attributes_T_OrderInfo">
+    <End Role="T_OrderInfo" Type="EchoShopModel.Store.T_OrderInfoSet" Multiplicity="1" />
+    <End Role="T_OrderInfoT_Attributes" Type="EchoShopModel.Store.T_OrderInfoT_Attributes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_OrderInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_OrderInfoT_Attributes">
+        <PropertyRef Name="T_OrderInfo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_OrderInfoT_Attributes_T_Attributes">
+    <End Role="T_OrderInfoT_Attributes" Type="EchoShopModel.Store.T_OrderInfoT_Attributes" Multiplicity="*" />
+    <End Role="T_Attributes" Type="EchoShopModel.Store.T_AttributesSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="T_Attributes">
+        <PropertyRef Name="AttrId" />
+      </Principal>
+      <Dependent Role="T_OrderInfoT_Attributes">
+        <PropertyRef Name="T_Attributes_AttrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="EchoShopModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="EchoShopModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_UserBaseInfoSet" EntityType="EchoShopModel.T_UserBaseInfo" />
+          <EntitySet Name="T_UserDetailInfoSet" EntityType="EchoShopModel.T_UserDetailInfo" />
+          <AssociationSet Name="T_UserDetailInfoT_UserBaseInfo" Association="EchoShopModel.T_UserDetailInfoT_UserBaseInfo">
+            <End Role="T_UserDetailInfo" EntitySet="T_UserDetailInfoSet" />
+            <End Role="T_UserBaseInfo" EntitySet="T_UserBaseInfoSet" />
+          </AssociationSet>
+          <EntitySet Name="DeliveryInfoSet" EntityType="EchoShopModel.DeliveryInfo" />
+          <AssociationSet Name="DeliveryInfoT_UserBaseInfo" Association="EchoShopModel.DeliveryInfoT_UserBaseInfo">
+            <End Role="DeliveryInfo" EntitySet="DeliveryInfoSet" />
+            <End Role="T_UserBaseInfo" EntitySet="T_UserBaseInfoSet" />
+          </AssociationSet>
+          <EntitySet Name="T_OrderInfoSet" EntityType="EchoShopModel.T_OrderInfo" />
+          <AssociationSet Name="T_OrderInfoT_UserBaseInfo" Association="EchoShopModel.T_OrderInfoT_UserBaseInfo">
+            <End Role="T_OrderInfo" EntitySet="T_OrderInfoSet" />
+            <End Role="T_UserBaseInfo" EntitySet="T_UserBaseInfoSet" />
+          </AssociationSet>
+          <EntitySet Name="T_OrderStatusSet" EntityType="EchoShopModel.T_OrderStatus" />
+          <AssociationSet Name="T_OrderInfoT_OrderStatus" Association="EchoShopModel.T_OrderInfoT_OrderStatus">
+            <End Role="T_OrderInfo" EntitySet="T_OrderInfoSet" />
+            <End Role="T_OrderStatus" EntitySet="T_OrderStatusSet" />
+          </AssociationSet>
+          <EntitySet Name="T_CategorySet" EntityType="EchoShopModel.T_Category" />
+          <EntitySet Name="T_ProductsSet" EntityType="EchoShopModel.T_Products" />
+          <AssociationSet Name="T_GoodsT_Category" Association="EchoShopModel.T_GoodsT_Category">
+            <End Role="T_Goods" EntitySet="T_ProductsSet" />
+            <End Role="T_Category" EntitySet="T_CategorySet" />
+          </AssociationSet>
+          <AssociationSet Name="T_OrderInfoT_Goods" Association="EchoShopModel.T_OrderInfoT_Goods">
+            <End Role="T_OrderInfo" EntitySet="T_OrderInfoSet" />
+            <End Role="T_Goods" EntitySet="T_ProductsSet" />
+          </AssociationSet>
+          <EntitySet Name="T_AdminSet" EntityType="EchoShopModel.T_Admin" />
+          <EntitySet Name="T_BrandSet" EntityType="EchoShopModel.T_Brand" />
+          <AssociationSet Name="T_GoodsT_Brand" Association="EchoShopModel.T_GoodsT_Brand">
+            <End Role="T_Goods" EntitySet="T_ProductsSet" />
+            <End Role="T_Brand" EntitySet="T_BrandSet" />
+          </AssociationSet>
+          <EntitySet Name="T_ProductAttrSet" EntityType="EchoShopModel.T_ProductAttr" />
+          <AssociationSet Name="T_ProductAttrT_Products" Association="EchoShopModel.T_ProductAttrT_Products">
+            <End Role="T_ProductAttr" EntitySet="T_ProductAttrSet" />
+            <End Role="T_Products" EntitySet="T_ProductsSet" />
+          </AssociationSet>
+          <EntitySet Name="T_AttributesSet" EntityType="EchoShopModel.T_Attributes" />
+          <EntitySet Name="T_AttrValueSet" EntityType="EchoShopModel.T_AttrValue" />
+          <AssociationSet Name="T_AttrValueT_Attributes" Association="EchoShopModel.T_AttrValueT_Attributes">
+            <End Role="T_AttrValue" EntitySet="T_AttrValueSet" />
+            <End Role="T_Attributes" EntitySet="T_AttributesSet" />
+          </AssociationSet>
+          <AssociationSet Name="T_AttributesT_ProductAttr" Association="EchoShopModel.T_AttributesT_ProductAttr">
+            <End Role="T_Attributes" EntitySet="T_AttributesSet" />
+            <End Role="T_ProductAttr" EntitySet="T_ProductAttrSet" />
+          </AssociationSet>
+          <AssociationSet Name="T_ProductAttrT_AttrValue" Association="EchoShopModel.T_ProductAttrT_AttrValue">
+            <End Role="T_ProductAttr" EntitySet="T_ProductAttrSet" />
+            <End Role="T_AttrValue" EntitySet="T_AttrValueSet" />
+          </AssociationSet>
+          <AssociationSet Name="T_OrderInfoT_Attributes" Association="EchoShopModel.T_OrderInfoT_Attributes">
+            <End Role="T_OrderInfo" EntitySet="T_OrderInfoSet" />
+            <End Role="T_Attributes" EntitySet="T_AttributesSet" />
+          </AssociationSet>
+          <EntitySet Name="T_FriendLinksSet" EntityType="EchoShopModel.T_FriendLinks" />
+          <EntitySet Name="T_FavoritesSet" EntityType="EchoShopModel.T_Favorites" />
+          <AssociationSet Name="T_FavoritesT_UserBaseInfo" Association="EchoShopModel.T_FavoritesT_UserBaseInfo">
+            <End Role="T_Favorites" EntitySet="T_FavoritesSet" />
+            <End Role="T_UserBaseInfo" EntitySet="T_UserBaseInfoSet" />
+          </AssociationSet>
+          <AssociationSet Name="T_ProductsT_Favorites" Association="EchoShopModel.T_ProductsT_Favorites">
+            <End Role="T_Products" EntitySet="T_ProductsSet" />
+            <End Role="T_Favorites" EntitySet="T_FavoritesSet" />
+          </AssociationSet>
+          <AssociationSet Name="T_OrderInfoDeliveryInfo" Association="EchoShopModel.T_OrderInfoDeliveryInfo">
+            <End Role="T_OrderInfo" EntitySet="T_OrderInfoSet" />
+            <End Role="DeliveryInfo" EntitySet="DeliveryInfoSet" />
+          </AssociationSet>
+          <EntitySet Name="T_CommentSet" EntityType="EchoShopModel.T_Comment" />
+          <AssociationSet Name="T_CommentT_OrderInfo" Association="EchoShopModel.T_CommentT_OrderInfo">
+            <End Role="T_Comment" EntitySet="T_CommentSet" />
+            <End Role="T_OrderInfo" EntitySet="T_OrderInfoSet" />
+          </AssociationSet>
+          <EntitySet Name="T_CommentImageSet" EntityType="EchoShopModel.T_CommentImage" />
+          <AssociationSet Name="T_CommentT_CommentImage" Association="EchoShopModel.T_CommentT_CommentImage">
+            <End Role="T_Comment" EntitySet="T_CommentSet" />
+            <End Role="T_CommentImage" EntitySet="T_CommentImageSet" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="T_UserBaseInfo">
+          <Key>
+            <PropertyRef Name="F_UId" />
+          </Key>
+          <Property Name="F_UId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" DefaultValue="10000" />
+          <Property Name="F_UName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="F_UPwd" Type="String" Nullable="false" FixedLength="true" MaxLength="32" Unicode="true" />
+          <Property Name="F_UState" Type="Boolean" Nullable="false" DefaultValue="True" />
+          <Property Name="F_UCreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="T_UserDetailInfo" Relationship="EchoShopModel.T_UserDetailInfoT_UserBaseInfo" FromRole="T_UserBaseInfo" ToRole="T_UserDetailInfo" />
+          <NavigationProperty Name="DeliveryInfo" Relationship="EchoShopModel.DeliveryInfoT_UserBaseInfo" FromRole="T_UserBaseInfo" ToRole="DeliveryInfo" />
+          <NavigationProperty Name="T_OrderInfo" Relationship="EchoShopModel.T_OrderInfoT_UserBaseInfo" FromRole="T_UserBaseInfo" ToRole="T_OrderInfo" />
+          <NavigationProperty Name="T_Favorites" Relationship="EchoShopModel.T_FavoritesT_UserBaseInfo" FromRole="T_UserBaseInfo" ToRole="T_Favorites" />
+        </EntityType>
+        <EntityType Name="T_UserDetailInfo">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="F_UNickName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="F_UBirthday" Type="DateTime" Nullable="true" Precision="3" />
+          <Property Name="F_USex" Type="String" Nullable="true" FixedLength="true" MaxLength="1" Unicode="true" />
+          <Property Name="F_UTel" Type="String" Nullable="true" MaxLength="11" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_UserBaseInfo" Relationship="EchoShopModel.T_UserDetailInfoT_UserBaseInfo" FromRole="T_UserDetailInfo" ToRole="T_UserBaseInfo" />
+        </EntityType>
+        <Association Name="T_UserDetailInfoT_UserBaseInfo">
+          <End Type="EchoShopModel.T_UserDetailInfo" Role="T_UserDetailInfo" Multiplicity="0..1" />
+          <End Type="EchoShopModel.T_UserBaseInfo" Role="T_UserBaseInfo" Multiplicity="1" />
+        </Association>
+        <EntityType Name="DeliveryInfo">
+          <Key>
+            <PropertyRef Name="F_DId" />
+          </Key>
+          <Property Name="F_DId" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="F_DConsignee" Type="String" Nullable="false" Unicode="true" MaxLength="10" />
+          <Property Name="F_DAddress" Type="String" Nullable="false" Unicode="true" />
+          <Property Name="F_DTel" Type="String" Nullable="false" />
+          <Property Name="F_DIsDefault" Type="Boolean" Nullable="true" />
+          <NavigationProperty Name="T_UserBaseInfo" Relationship="EchoShopModel.DeliveryInfoT_UserBaseInfo" FromRole="DeliveryInfo" ToRole="T_UserBaseInfo" />
+          <NavigationProperty Name="T_OrderInfo" Relationship="EchoShopModel.T_OrderInfoDeliveryInfo" FromRole="DeliveryInfo" ToRole="T_OrderInfo" />
+        </EntityType>
+        <Association Name="DeliveryInfoT_UserBaseInfo">
+          <End Type="EchoShopModel.DeliveryInfo" Role="DeliveryInfo" Multiplicity="*" />
+          <End Type="EchoShopModel.T_UserBaseInfo" Role="T_UserBaseInfo" Multiplicity="1" />
+        </Association>
+        <EntityType Name="T_OrderInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="T_UserBaseInfo" Relationship="EchoShopModel.T_OrderInfoT_UserBaseInfo" FromRole="T_OrderInfo" ToRole="T_UserBaseInfo" />
+          <NavigationProperty Name="T_OrderStatus" Relationship="EchoShopModel.T_OrderInfoT_OrderStatus" FromRole="T_OrderInfo" ToRole="T_OrderStatus" />
+          <NavigationProperty Name="T_Products" Relationship="EchoShopModel.T_OrderInfoT_Goods" FromRole="T_OrderInfo" ToRole="T_Goods" />
+          <Property Name="F_Quantity" Type="String" Nullable="false" />
+          <NavigationProperty Name="T_Attributes" Relationship="EchoShopModel.T_OrderInfoT_Attributes" FromRole="T_OrderInfo" ToRole="T_Attributes" />
+          <Property Name="F_UnitPrice" Type="Single" Nullable="false" DefaultValue="0" />
+          <NavigationProperty Name="DeliveryInfo" Relationship="EchoShopModel.T_OrderInfoDeliveryInfo" FromRole="T_OrderInfo" ToRole="DeliveryInfo" />
+          <Property Name="F_OrderTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="T_Comment" Relationship="EchoShopModel.T_CommentT_OrderInfo" FromRole="T_OrderInfo" ToRole="T_Comment" />
+          <Property Name="F_OrderNumber" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="T_OrderInfoT_UserBaseInfo">
+          <End Type="EchoShopModel.T_OrderInfo" Role="T_OrderInfo" Multiplicity="*" />
+          <End Type="EchoShopModel.T_UserBaseInfo" Role="T_UserBaseInfo" Multiplicity="1" />
+        </Association>
+        <EntityType Name="T_OrderStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatuName" Type="String" Nullable="false" Unicode="true" />
+          <NavigationProperty Name="T_OrderInfo" Relationship="EchoShopModel.T_OrderInfoT_OrderStatus" FromRole="T_OrderStatus" ToRole="T_OrderInfo" />
+        </EntityType>
+        <Association Name="T_OrderInfoT_OrderStatus">
+          <End Type="EchoShopModel.T_OrderInfo" Role="T_OrderInfo" Multiplicity="*" />
+          <End Type="EchoShopModel.T_OrderStatus" Role="T_OrderStatus" Multiplicity="1" />
+        </Association>
+        <EntityType Name="T_Category">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" DefaultValue="1000" />
+          <Property Name="F_CategoryName" Type="String" Nullable="false" Unicode="true" />
+          <Property Name="F_OrderValue" Type="Int32" Nullable="true" />
+          <Property Name="F_Icon" Type="String" Nullable="true" />
+          <NavigationProperty Name="T_Goods" Relationship="EchoShopModel.T_GoodsT_Category" FromRole="T_Category" ToRole="T_Goods" />
+          <Property Name="F_ParentId" Type="Int32" Nullable="false" DefaultValue="0" />
+        </EntityType>
+        <EntityType Name="T_Products">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="T_Category" Relationship="EchoShopModel.T_GoodsT_Category" FromRole="T_Goods" ToRole="T_Category" />
+          <Property Name="F_Name" Type="String" Nullable="false" />
+          <Property Name="F_Desc" Type="String" Nullable="false" />
+          <NavigationProperty Name="T_OrderInfo" Relationship="EchoShopModel.T_OrderInfoT_Goods" FromRole="T_Goods" ToRole="T_OrderInfo" />
+          <Property Name="F_OriginalPrice" Type="Single" Nullable="false" DefaultValue="0" />
+          <Property Name="F_PresentPrice" Type="Single" Nullable="false" DefaultValue="0" />
+          <NavigationProperty Name="T_Brand" Relationship="EchoShopModel.T_GoodsT_Brand" FromRole="T_Goods" ToRole="T_Brand" />
+          <Property Name="F_IsNew" Type="Boolean" Nullable="false" DefaultValue="False" />
+          <Property Name="F_IsHot" Type="Boolean" Nullable="false" DefaultValue="False" />
+          <Property Name="F_Img" Type="String" Nullable="true" />
+          <Property Name="F_AddDate" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="T_ProductAttr" Relationship="EchoShopModel.T_ProductAttrT_Products" FromRole="T_Products" ToRole="T_ProductAttr" />
+          <NavigationProperty Name="T_Favorites" Relationship="EchoShopModel.T_ProductsT_Favorites" FromRole="T_Products" ToRole="T_Favorites" />
+        </EntityType>
+        <Association Name="T_GoodsT_Category">
+          <End Type="EchoShopModel.T_Products" Role="T_Goods" Multiplicity="*" />
+          <End Type="EchoShopModel.T_Category" Role="T_Category" Multiplicity="1" />
+        </Association>
+        <Association Name="T_OrderInfoT_Goods">
+          <End Type="EchoShopModel.T_OrderInfo" Role="T_OrderInfo" Multiplicity="*" />
+          <End Type="EchoShopModel.T_Products" Role="T_Goods" Multiplicity="1" />
+        </Association>
+        <EntityType Name="T_Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="F_Name" Type="String" Nullable="false" />
+          <Property Name="F_Pwd" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="T_Goods" Relationship="EchoShopModel.T_GoodsT_Brand" FromRole="T_Brand" ToRole="T_Goods" />
+          <Property Name="F_Name" Type="String" Nullable="false" />
+          <Property Name="F_Logo" Type="String" Nullable="true" />
+        </EntityType>
+        <Association Name="T_GoodsT_Brand">
+          <End Type="EchoShopModel.T_Products" Role="T_Goods" Multiplicity="*" />
+          <End Type="EchoShopModel.T_Brand" Role="T_Brand" Multiplicity="1" />
+        </Association>
+        <EntityType Name="T_ProductAttr">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="T_Products" Relationship="EchoShopModel.T_ProductAttrT_Products" FromRole="T_ProductAttr" ToRole="T_Products" />
+          <NavigationProperty Name="T_Attributes" Relationship="EchoShopModel.T_AttributesT_ProductAttr" FromRole="T_ProductAttr" ToRole="T_Attributes" />
+          <NavigationProperty Name="T_AttrValue" Relationship="EchoShopModel.T_ProductAttrT_AttrValue" FromRole="T_ProductAttr" ToRole="T_AttrValue" />
+          <Property Name="Price" Type="Single" Nullable="false" DefaultValue="0" />
+          <Property Name="Stock" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="Title" Type="String" Nullable="true" />
+          <Property Name="Image" Type="String" Nullable="true" />
+        </EntityType>
+        <Association Name="T_ProductAttrT_Products">
+          <End Type="EchoShopModel.T_ProductAttr" Role="T_ProductAttr" Multiplicity="*" />
+          <End Type="EchoShopModel.T_Products" Role="T_Products" Multiplicity="1" />
+        </Association>
+        <EntityType Name="T_Attributes">
+          <Key>
+            <PropertyRef Name="AttrId" />
+          </Key>
+          <Property Name="AttrId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttrName" Type="String" Nullable="false" />
+          <NavigationProperty Name="T_AttrValue" Relationship="EchoShopModel.T_AttrValueT_Attributes" FromRole="T_Attributes" ToRole="T_AttrValue" />
+          <NavigationProperty Name="T_ProductAttr" Relationship="EchoShopModel.T_AttributesT_ProductAttr" FromRole="T_Attributes" ToRole="T_ProductAttr" />
+          <NavigationProperty Name="T_OrderInfo" Relationship="EchoShopModel.T_OrderInfoT_Attributes" FromRole="T_Attributes" ToRole="T_OrderInfo" />
+        </EntityType>
+        <EntityType Name="T_AttrValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="T_Attributes" Relationship="EchoShopModel.T_AttrValueT_Attributes" FromRole="T_AttrValue" ToRole="T_Attributes" />
+          <NavigationProperty Name="T_ProductAttr" Relationship="EchoShopModel.T_ProductAttrT_AttrValue" FromRole="T_AttrValue" ToRole="T_ProductAttr" />
+        </EntityType>
+        <Association Name="T_AttrValueT_Attributes">
+          <End Type="EchoShopModel.T_AttrValue" Role="T_AttrValue" Multiplicity="*" />
+          <End Type="EchoShopModel.T_Attributes" Role="T_Attributes" Multiplicity="1" />
+        </Association>
+        <Association Name="T_AttributesT_ProductAttr">
+          <End Type="EchoShopModel.T_Attributes" Role="T_Attributes" Multiplicity="1" />
+          <End Type="EchoShopModel.T_ProductAttr" Role="T_ProductAttr" Multiplicity="*" />
+        </Association>
+        <Association Name="T_ProductAttrT_AttrValue">
+          <End Type="EchoShopModel.T_ProductAttr" Role="T_ProductAttr" Multiplicity="*" />
+          <End Type="EchoShopModel.T_AttrValue" Role="T_AttrValue" Multiplicity="1" />
+        </Association>
+        <Association Name="T_OrderInfoT_Attributes">
+          <End Type="EchoShopModel.T_OrderInfo" Role="T_OrderInfo" Multiplicity="*" />
+          <End Type="EchoShopModel.T_Attributes" Role="T_Attributes" Multiplicity="*" />
+        </Association>
+        <EntityType Name="T_FriendLinks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Logo" Type="String" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Url" Type="String" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" DefaultValue="0" />
+        </EntityType>
+        <EntityType Name="T_Favorites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="T_UserBaseInfo" Relationship="EchoShopModel.T_FavoritesT_UserBaseInfo" FromRole="T_Favorites" ToRole="T_UserBaseInfo" />
+          <NavigationProperty Name="T_Products" Relationship="EchoShopModel.T_ProductsT_Favorites" FromRole="T_Favorites" ToRole="T_Products" />
+          <Property Name="AddDate" Type="DateTime" Nullable="true" />
+        </EntityType>
+        <Association Name="T_FavoritesT_UserBaseInfo">
+          <End Type="EchoShopModel.T_Favorites" Role="T_Favorites" Multiplicity="*" />
+          <End Type="EchoShopModel.T_UserBaseInfo" Role="T_UserBaseInfo" Multiplicity="1" />
+        </Association>
+        <Association Name="T_ProductsT_Favorites">
+          <End Type="EchoShopModel.T_Products" Role="T_Products" Multiplicity="1" />
+          <End Type="EchoShopModel.T_Favorites" Role="T_Favorites" Multiplicity="*" />
+        </Association>
+        <Association Name="T_OrderInfoDeliveryInfo">
+          <End Type="EchoShopModel.T_OrderInfo" Role="T_OrderInfo" Multiplicity="*" />
+          <End Type="EchoShopModel.DeliveryInfo" Role="DeliveryInfo" Multiplicity="1" />
+        </Association>
+        <EntityType Name="T_Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="T_OrderInfo" Relationship="EchoShopModel.T_CommentT_OrderInfo" FromRole="T_Comment" ToRole="T_OrderInfo" />
+          <Property Name="CommentTime" Type="DateTime" Nullable="false" />
+          <Property Name="Content" Type="String" Nullable="false" />
+          <NavigationProperty Name="T_CommentImage" Relationship="EchoShopModel.T_CommentT_CommentImage" FromRole="T_Comment" ToRole="T_CommentImage" />
+        </EntityType>
+        <Association Name="T_CommentT_OrderInfo">
+          <End Type="EchoShopModel.T_Comment" Role="T_Comment" Multiplicity="0..1" />
+          <End Type="EchoShopModel.T_OrderInfo" Role="T_OrderInfo" Multiplicity="1" />
+        </Association>
+        <EntityType Name="T_CommentImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Url" Type="String" Nullable="false" />
+          <NavigationProperty Name="T_Comment" Relationship="EchoShopModel.T_CommentT_CommentImage" FromRole="T_CommentImage" ToRole="T_Comment" />
+        </EntityType>
+        <Association Name="T_CommentT_CommentImage">
+          <End Type="EchoShopModel.T_Comment" Role="T_Comment" Multiplicity="1" />
+          <End Type="EchoShopModel.T_CommentImage" Role="T_CommentImage" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EchoShopModelStoreContainer" CdmEntityContainer="EchoShopModelContainer">
+    <EntitySetMapping Name="T_UserBaseInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_UserBaseInfo)">
+        <MappingFragment StoreEntitySet="T_UserBaseInfoSet">
+          <ScalarProperty Name="F_UId" ColumnName="F_UId" />
+          <ScalarProperty Name="F_UName" ColumnName="F_UName" />
+          <ScalarProperty Name="F_UPwd" ColumnName="F_UPwd" />
+          <ScalarProperty Name="F_UState" ColumnName="F_UState" />
+          <ScalarProperty Name="F_UCreationDate" ColumnName="F_UCreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_UserDetailInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_UserDetailInfo)">
+        <MappingFragment StoreEntitySet="T_UserDetailInfoSet">
+          <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+          <ScalarProperty Name="F_UNickName" ColumnName="F_UNickName" />
+          <ScalarProperty Name="F_UBirthday" ColumnName="F_UBirthday" />
+          <ScalarProperty Name="F_USex" ColumnName="F_USex" />
+          <ScalarProperty Name="F_UTel" ColumnName="F_UTel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliveryInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.DeliveryInfo)">
+        <MappingFragment StoreEntitySet="DeliveryInfoSet">
+          <ScalarProperty Name="F_DId" ColumnName="F_DId" />
+          <ScalarProperty Name="F_DConsignee" ColumnName="F_DConsignee" />
+          <ScalarProperty Name="F_DAddress" ColumnName="F_DAddress" />
+          <ScalarProperty Name="F_DTel" ColumnName="F_DTel" />
+          <ScalarProperty Name="F_DIsDefault" ColumnName="F_DIsDefault" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_OrderInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_OrderInfo)">
+        <MappingFragment StoreEntitySet="T_OrderInfoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="F_Quantity" ColumnName="F_Quantity" />
+          <ScalarProperty Name="F_UnitPrice" ColumnName="F_UnitPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_OrderStatusSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_OrderStatus)">
+        <MappingFragment StoreEntitySet="T_OrderStatusSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StatuName" ColumnName="StatuName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_CategorySet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_Category)">
+        <MappingFragment StoreEntitySet="T_CategorySet">
+          <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+          <ScalarProperty Name="F_CategoryName" ColumnName="F_CategoryName" />
+          <ScalarProperty Name="F_OrderValue" ColumnName="F_OrderValue" />
+          <ScalarProperty Name="F_Icon" ColumnName="F_Icon" />
+          <ScalarProperty Name="F_ParentId" ColumnName="F_ParentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ProductsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_Products)">
+        <MappingFragment StoreEntitySet="T_ProductsSet">
+          <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+          <ScalarProperty Name="F_Name" ColumnName="F_Name" />
+          <ScalarProperty Name="F_Desc" ColumnName="F_Desc" />
+          <ScalarProperty Name="F_OriginalPrice" ColumnName="F_OriginalPrice" />
+          <ScalarProperty Name="F_PresentPrice" ColumnName="F_PresentPrice" />
+          <ScalarProperty Name="F_IsNew" ColumnName="F_IsNew" />
+          <ScalarProperty Name="F_IsHot" ColumnName="F_IsHot" />
+          <ScalarProperty Name="F_Img" ColumnName="F_Img" />
+          <ScalarProperty Name="F_AddDate" ColumnName="F_AddDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_AdminSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_Admin)">
+        <MappingFragment StoreEntitySet="T_AdminSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="F_Name" ColumnName="F_Name" />
+          <ScalarProperty Name="F_Pwd" ColumnName="F_Pwd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_BrandSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_Brand)">
+        <MappingFragment StoreEntitySet="T_BrandSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="F_Name" ColumnName="F_Name" />
+          <ScalarProperty Name="F_Logo" ColumnName="F_Logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ProductAttrSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_ProductAttr)">
+        <MappingFragment StoreEntitySet="T_ProductAttrSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_AttributesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_Attributes)">
+        <MappingFragment StoreEntitySet="T_AttributesSet">
+          <ScalarProperty Name="AttrId" ColumnName="AttrId" />
+          <ScalarProperty Name="AttrName" ColumnName="AttrName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_AttrValueSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_AttrValue)">
+        <MappingFragment StoreEntitySet="T_AttrValueSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_FriendLinksSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_FriendLinks)">
+        <MappingFragment StoreEntitySet="T_FriendLinksSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_FavoritesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_Favorites)">
+        <MappingFragment StoreEntitySet="T_FavoritesSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="T_UserDetailInfoT_UserBaseInfo" TypeName="EchoShopModel.T_UserDetailInfoT_UserBaseInfo" StoreEntitySet="T_UserDetailInfoSet">
+      <EndProperty Name="T_UserBaseInfo">
+        <ScalarProperty Name="F_UId" ColumnName="T_UserBaseInfo_F_UId" />
+      </EndProperty>
+      <EndProperty Name="T_UserDetailInfo">
+        <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DeliveryInfoT_UserBaseInfo" TypeName="EchoShopModel.DeliveryInfoT_UserBaseInfo" StoreEntitySet="DeliveryInfoSet">
+      <EndProperty Name="T_UserBaseInfo">
+        <ScalarProperty Name="F_UId" ColumnName="T_UserBaseInfo_F_UId" />
+      </EndProperty>
+      <EndProperty Name="DeliveryInfo">
+        <ScalarProperty Name="F_DId" ColumnName="F_DId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_OrderInfoT_UserBaseInfo" TypeName="EchoShopModel.T_OrderInfoT_UserBaseInfo" StoreEntitySet="T_OrderInfoSet">
+      <EndProperty Name="T_UserBaseInfo">
+        <ScalarProperty Name="F_UId" ColumnName="T_UserBaseInfo_F_UId" />
+      </EndProperty>
+      <EndProperty Name="T_OrderInfo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_OrderInfoT_OrderStatus" TypeName="EchoShopModel.T_OrderInfoT_OrderStatus" StoreEntitySet="T_OrderInfoSet">
+      <EndProperty Name="T_OrderStatus">
+        <ScalarProperty Name="Id" ColumnName="T_OrderStatus_Id" />
+      </EndProperty>
+      <EndProperty Name="T_OrderInfo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_GoodsT_Category" TypeName="EchoShopModel.T_GoodsT_Category" StoreEntitySet="T_ProductsSet">
+      <EndProperty Name="T_Category">
+        <ScalarProperty Name="F_Id" ColumnName="T_Category_F_Id" />
+      </EndProperty>
+      <EndProperty Name="T_Goods">
+        <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_OrderInfoT_Goods" TypeName="EchoShopModel.T_OrderInfoT_Goods" StoreEntitySet="T_OrderInfoSet">
+      <EndProperty Name="T_Goods">
+        <ScalarProperty Name="F_Id" ColumnName="T_Goods_F_Id" />
+      </EndProperty>
+      <EndProperty Name="T_OrderInfo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_GoodsT_Brand" TypeName="EchoShopModel.T_GoodsT_Brand" StoreEntitySet="T_ProductsSet">
+      <EndProperty Name="T_Brand">
+        <ScalarProperty Name="Id" ColumnName="T_Brand_Id" />
+      </EndProperty>
+      <EndProperty Name="T_Goods">
+        <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_ProductAttrT_Products" TypeName="EchoShopModel.T_ProductAttrT_Products" StoreEntitySet="T_ProductAttrSet">
+      <EndProperty Name="T_Products">
+        <ScalarProperty Name="F_Id" ColumnName="T_Products_F_Id" />
+      </EndProperty>
+      <EndProperty Name="T_ProductAttr">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_AttrValueT_Attributes" TypeName="EchoShopModel.T_AttrValueT_Attributes" StoreEntitySet="T_AttrValueSet">
+      <EndProperty Name="T_Attributes">
+        <ScalarProperty Name="AttrId" ColumnName="T_Attributes_AttrId" />
+      </EndProperty>
+      <EndProperty Name="T_AttrValue">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_AttributesT_ProductAttr" TypeName="EchoShopModel.T_AttributesT_ProductAttr" StoreEntitySet="T_ProductAttrSet">
+      <EndProperty Name="T_Attributes">
+        <ScalarProperty Name="AttrId" ColumnName="T_Attributes_AttrId" />
+      </EndProperty>
+      <EndProperty Name="T_ProductAttr">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_ProductAttrT_AttrValue" TypeName="EchoShopModel.T_ProductAttrT_AttrValue" StoreEntitySet="T_ProductAttrSet">
+      <EndProperty Name="T_AttrValue">
+        <ScalarProperty Name="Id" ColumnName="T_AttrValue_Id" />
+      </EndProperty>
+      <EndProperty Name="T_ProductAttr">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_OrderInfoT_Attributes" TypeName="EchoShopModel.T_OrderInfoT_Attributes" StoreEntitySet="T_OrderInfoT_Attributes">
+      <EndProperty Name="T_OrderInfo">
+        <ScalarProperty Name="Id" ColumnName="T_OrderInfo_Id" />
+      </EndProperty>
+      <EndProperty Name="T_Attributes">
+        <ScalarProperty Name="AttrId" ColumnName="T_Attributes_AttrId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_FavoritesT_UserBaseInfo" TypeName="EchoShopModel.T_FavoritesT_UserBaseInfo" StoreEntitySet="T_FavoritesSet">
+      <EndProperty Name="T_UserBaseInfo">
+        <ScalarProperty Name="F_UId" ColumnName="T_UserBaseInfo_F_UId" />
+      </EndProperty>
+      <EndProperty Name="T_Favorites">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_ProductsT_Favorites" TypeName="EchoShopModel.T_ProductsT_Favorites" StoreEntitySet="T_FavoritesSet">
+      <EndProperty Name="T_Products">
+        <ScalarProperty Name="F_Id" ColumnName="T_Products_F_Id" />
+      </EndProperty>
+      <EndProperty Name="T_Favorites">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_OrderInfoDeliveryInfo" TypeName="EchoShopModel.T_OrderInfoDeliveryInfo" StoreEntitySet="T_OrderInfoSet">
+      <EndProperty Name="DeliveryInfo">
+        <ScalarProperty Name="F_DId" ColumnName="DeliveryInfo_F_DId" />
+      </EndProperty>
+      <EndProperty Name="T_OrderInfo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

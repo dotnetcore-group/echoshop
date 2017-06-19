@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "首页";
+    Layout = "~/Views/_LayoutMain.cshtml";
+}
+
+@section style{
+    <link rel="stylesheet" href="~/Content/style/index.css" type="text/css" />
+}
+
+<div class="g-bd" style="height: 1800px">
+    <div class="banner">
+        <ul class="">
+            <li><a href=""><img src="~/Content/img/banner1.png" alt=""></a></li>
+            <li><a href=""><img src="~/Content/img/banner2.png" alt=""></a></li>
+            <li><a href=""><img src="~/Content/img/banner3.png" alt=""></a></li>
+            <li><a href=""><img src="~/Content/img/banner4.png" alt=""></a></li>
+        </ul>
+        <div class="g-row" style="height: 450px">
+            <div class="left-btn"></div>
+            <div class="right-btn"></div>
+        </div>
+        <div class="img-btn-list"></div>
+    </div>
+
+    <div class="m-manufacturer">
+        <div class="g-row">
+            <div class="m-cate">
+                <header class="hd">
+                    <div class="left">
+                        <h3 class="name">品牌制造商</h3>
+                        <small class="frontName">工厂直达消费者，剔除品牌溢价</small>
+                    </div>
+                    <div class="right">
+                        <a href="#" class="moreItems">更多制造商 &gt;</a>
+                    </div>
+                </header>
+                <div class="bd">
+                    <div class="manufacturerList">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-manufacturer">
+        <div class="g-row">
+            <div class="m-cate">
+                <header class="hd">
+                    <div class="left">
+                        <h3 class="name">新品首发</h3>
+                        <small class="frontName">周一周四上新，为你寻觅世间好物</small>
+                    </div>
+                    <div class="right">
+                        <a href="#" class="moreItems">更多新品 &gt;</a>
+                    </div>
+                </header>
+                <div class="bd">
+                    <div class="manufacturerList">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section script{
+    <script type="text/javascript">
+        bannerListFn(
+		    $(".banner"),
+		    $(".img-btn-list"),
+		    $(".left-btn"),
+		    $(".right-btn"),
+		    3000,
+		    true
+		);
+    </script>
+}
+

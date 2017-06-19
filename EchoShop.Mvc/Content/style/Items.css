@@ -1,0 +1,135 @@
+﻿.g-bd-list {
+    padding-bottom: 80px;
+    background-color: #f5f5f5;
+    z-index: 1;
+    position: relative;
+}
+
+.m-crumbs {
+    font-size: 12px;
+    line-height: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #333;
+}
+
+.arrow-right-hollow {
+    background-position: 0 -335px;
+    height: 11px;
+    width: 5px;
+    margin: 0 5px;
+}
+
+.m-crumbs .z-cur {
+    color: #999;
+}
+
+.m-goodsArea {
+    padding: 0 40px;
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.m-sortbar {
+    margin-top: 10px;
+    border-bottom: 1px solid #eaeaea;
+    overflow: hidden;
+}
+
+    .m-sortbar .category:first-child, .m-sortbar .manufacture:first-child {
+        border-top: none;
+    }
+
+    .m-sortbar .category, .m-sortbar .manufacture {
+        overflow: hidden;
+        border-top: 1px dashed #dedede;
+        line-height: 1;
+        padding-top: 20px;
+    }
+
+.m-content {
+    overflow: hidden;
+}
+.m-sortbar .category .name, .m-sortbar .manufacture .name {
+    font-size: 14px;
+    color: #999;
+    float: left;
+    margin-right: 22px;
+}
+.m-sortbar .category .categoryGroup, .m-sortbar .manufacture .categoryGroup {
+    overflow: hidden;
+    float: left;
+    margin-bottom: 4px;
+    width: 930px;
+}
+.m-sortbar .category .categoryItem, .m-sortbar .manufacture .categoryItem {
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+.m-sortbar .active {
+    color: #b4a078;
+}
+.m-sortbar .sorts {
+    overflow: hidden;
+    padding: 20px 0;
+    line-height: 1;
+    border-top: 1px dashed #dedede;
+    float:left;
+    width:100%;
+}
+.m-sortbar .sorts .sort {
+    float: left;
+    margin-right: 30px;
+    font-size: 14px;
+}
+.m-sortbar .sorts .sort-price .icon {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+    margin-top: -2px;
+}
+.m-Level2Category {
+    padding-top: 30px;
+}
+.m-Level2Category>.hd {
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 40px;
+}
+.m-Level2Category>.hd .title {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.m-Level2Category>.hd .name {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 44px;
+}
+.m-Level2Category>.hd .desc {
+    font-size: 14px;
+    color: #999;
+    line-height: 1.5;
+}
+.m-itemList-level2Category {
+    margin-top: 25px;
+}
+.m-itemList {
+    margin-right: -10px;
+}
+.m-itemList .item {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 50px;
+    background:#333
+}
+.m-product {
+    line-height: 1;
+    text-align: center;
+    font-size: 13px;
+    width: 245px;
+    height: 361px;
+    position: relative;
+}

@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/_LayoutMain.cshtml";
+}
+
+@section style{
+    <link href="~/Content/style/Items.css" rel="stylesheet" />
+}
+
+<div class="g-bd-list">
+    <div class="g-row">
+        <!--面包屑-->
+        <div class="m-crumbs">
+            <a href="/">首页</a>
+            <span class="arrow-right-hollow">></span>
+            <span class="z-cur">居家</span>
+        </div>
+        <!--商品展示区域-->
+        <div class="j-goodsAreaWrap">
+            <div class="m-goodsArea">
+                <!--商品分类条-->
+                <div class="m-sortbar">
+                    <div class="category">
+                        <span class="name">分类：</span>
+                        <div class="categoryGroup">
+                            <a href="" class="categoryItem j-categoryItem active">全部</a>
+                            <a href="" class="categoryItem">夏凉</a>
+                            <a href="" class="categoryItem">夏凉</a>
+                            <a href="" class="categoryItem">夏凉</a>
+                            <a href="" class="categoryItem">夏凉</a>
+                            <a href="" class="categoryItem">夏凉</a>
+                            <a href="" class="categoryItem">夏凉</a>
+                            <a href="" class="categoryItem">夏凉</a>
+                            <a href="" class="categoryItem">夏凉</a>
+                            <a href="" class="categoryItem">夏凉</a>
+                        </div>
+
+                        <div class="sorts">
+                            <span class="name">
+                                排序：
+                            </span>
+                            <a href="" class="sort sort-default active">默认</a>
+                            <a href="" class="sort sort-price">
+                                <span>价格</span>
+                                <div class="icon">
+                                </div>
+                            </a>
+                            <a href="" class="sort sort-price">
+                                <span>上架时间</span>
+                                <div class="icon">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--商品内容-->
+                <div class="m-content">
+                    <div class="m-Level2Category" id="1000">
+                        <div class="hd">
+                            <p class="title f-clearfix">
+                                <span class="name f-left">
+                                    夏凉
+                                </span>
+                            </p>
+                            <p class="desc">夏凉床品，舒适一夏</p>
+                        </div>
+
+                        <ul class="m-itemList m-itemList-level2Category">
+                            <li class="item">
+                                <div class="m-product j-product">
+
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="m-product j-product">
+
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="m-product j-product">
+
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="m-product j-product">
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
