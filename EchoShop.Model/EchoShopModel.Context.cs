@@ -41,5 +41,7 @@ namespace EchoShop.Model
         public virtual DbSet<T_Favorites> T_FavoritesSet { get; set; }
         public virtual DbSet<T_Comment> T_CommentSet { get; set; }
         public virtual DbSet<T_CommentImage> T_CommentImageSet { get; set; }
+        public virtual DbSet<T_CarouselFigure> T_CarouselFigureSet { get; set; }
+        public virtual DbSet<T_ShoppingCart> T_ShoppingCartSet { get; set; }
     }
 }

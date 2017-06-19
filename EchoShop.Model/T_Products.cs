@@ -24,6 +24,7 @@ namespace EchoShop.Model
             this.T_OrderInfo = new HashSet<T_OrderInfo>();
             this.T_ProductAttr = new HashSet<T_ProductAttr>();
             this.T_Favorites = new HashSet<T_Favorites>();
+            this.T_ShoppingCart = new HashSet<T_ShoppingCart>();
         }
     
         public int F_Id { get; set; }
@@ -44,5 +45,7 @@ namespace EchoShop.Model
         public virtual ICollection<T_ProductAttr> T_ProductAttr { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<T_Favorites> T_Favorites { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<T_ShoppingCart> T_ShoppingCart { get; set; }
     }
 }

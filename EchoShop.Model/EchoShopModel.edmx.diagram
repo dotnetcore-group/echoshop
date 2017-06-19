@@ -5,39 +5,47 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ce2f0e539d544c1e85f30d1a4321e426" Name="Diagram1" ZoomLevel="87" >
-        <EntityTypeShape EntityType="EchoShopModel.T_UserBaseInfo" Width="1.5" PointX="2.5" PointY="3.5" />
-        <EntityTypeShape EntityType="EchoShopModel.T_UserDetailInfo" Width="1.5" PointX="2.375" PointY="7.125" />
+        <EntityTypeShape EntityType="EchoShopModel.T_UserBaseInfo" Width="1.5" PointX="2.625" PointY="7.75" />
+        <EntityTypeShape EntityType="EchoShopModel.T_UserDetailInfo" Width="1.5" PointX="2.5" PointY="11.375" />
         <AssociationConnector Association="EchoShopModel.T_UserDetailInfoT_UserBaseInfo" />
-        <EntityTypeShape EntityType="EchoShopModel.DeliveryInfo" Width="1.5" PointX="4.5" PointY="1.625" />
+        <EntityTypeShape EntityType="EchoShopModel.DeliveryInfo" Width="1.5" PointX="4.5" PointY="9.625" />
         <AssociationConnector Association="EchoShopModel.DeliveryInfoT_UserBaseInfo" />
-        <EntityTypeShape EntityType="EchoShopModel.T_OrderInfo" Width="1.5" PointX="7.25" PointY="3.875" />
+        <EntityTypeShape EntityType="EchoShopModel.T_OrderInfo" Width="1.5" PointX="7.375" PointY="8.125" />
         <AssociationConnector Association="EchoShopModel.T_OrderInfoT_UserBaseInfo" />
-        <EntityTypeShape EntityType="EchoShopModel.T_OrderStatus" Width="1.5" PointX="7.5" PointY="8.25" />
+        <EntityTypeShape EntityType="EchoShopModel.T_OrderStatus" Width="1.5" PointX="7.625" PointY="12.5" />
         <AssociationConnector Association="EchoShopModel.T_OrderInfoT_OrderStatus" />
-        <EntityTypeShape EntityType="EchoShopModel.T_Category" Width="1.5" PointX="12.75" PointY="8" />
-        <EntityTypeShape EntityType="EchoShopModel.T_Products" Width="1.5" PointX="9.875" PointY="3.625" />
+        <EntityTypeShape EntityType="EchoShopModel.T_Category" Width="1.5" PointX="13" PointY="8.375" />
+        <EntityTypeShape EntityType="EchoShopModel.T_Products" Width="1.5" PointX="10.625" PointY="8" />
         <AssociationConnector Association="EchoShopModel.T_GoodsT_Category" />
         <AssociationConnector Association="EchoShopModel.T_OrderInfoT_Goods" />
-        <EntityTypeShape EntityType="EchoShopModel.T_Admin" Width="1.5" PointX="2.25" PointY="15.875" />
-        <EntityTypeShape EntityType="EchoShopModel.T_Brand" Width="1.5" PointX="9.25" PointY="9.375" />
+        <EntityTypeShape EntityType="EchoShopModel.T_Admin" Width="1.5" PointX="2.375" PointY="20.125" />
+        <EntityTypeShape EntityType="EchoShopModel.T_Brand" Width="1.5" PointX="9.375" PointY="13.625" />
         <AssociationConnector Association="EchoShopModel.T_GoodsT_Brand" />
-        <EntityTypeShape EntityType="EchoShopModel.T_ProductAttr" Width="1.5" PointX="12.75" PointY="4.875" />
-        <AssociationConnector Association="EchoShopModel.T_ProductAttrT_Products" />
-        <EntityTypeShape EntityType="EchoShopModel.T_Attributes" Width="1.5" PointX="12.625" PointY="1.75" />
+        <EntityTypeShape EntityType="EchoShopModel.T_ProductAttr" Width="1.5" PointX="15" PointY="10.25" />
+        <AssociationConnector Association="EchoShopModel.T_ProductAttrT_Products" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="EchoShopModel.T_Attributes" Width="1.5" PointX="13" PointY="6" />
         <EntityTypeShape EntityType="EchoShopModel.T_AttrValue" Width="1.5" PointX="15" PointY="1.75" />
         <AssociationConnector Association="EchoShopModel.T_AttrValueT_Attributes" />
         <AssociationConnector Association="EchoShopModel.T_AttributesT_ProductAttr" />
         <AssociationConnector Association="EchoShopModel.T_ProductAttrT_AttrValue" />
         <AssociationConnector Association="EchoShopModel.T_OrderInfoT_Attributes" />
-        <EntityTypeShape EntityType="EchoShopModel.T_FriendLinks" Width="1.5" PointX="2.25" PointY="12.5" />
-        <EntityTypeShape EntityType="EchoShopModel.T_Favorites" Width="1.5" PointX="1.75" PointY="0.5" />
+        <EntityTypeShape EntityType="EchoShopModel.T_FriendLinks" Width="1.5" PointX="2.375" PointY="16.75" />
+        <EntityTypeShape EntityType="EchoShopModel.T_Favorites" Width="1.5" PointX="7.25" PointY="4.875" />
         <AssociationConnector Association="EchoShopModel.T_FavoritesT_UserBaseInfo" />
         <AssociationConnector Association="EchoShopModel.T_ProductsT_Favorites" />
         <AssociationConnector Association="EchoShopModel.T_OrderInfoDeliveryInfo" />
-        <EntityTypeShape EntityType="EchoShopModel.T_Comment" Width="1.5" PointX="5" PointY="8.125" />
+        <EntityTypeShape EntityType="EchoShopModel.T_Comment" Width="1.5" PointX="5.125" PointY="12.375" />
         <AssociationConnector Association="EchoShopModel.T_CommentT_OrderInfo" />
-        <EntityTypeShape EntityType="EchoShopModel.T_CommentImage" Width="1.5" PointX="5" PointY="10.875" />
+        <EntityTypeShape EntityType="EchoShopModel.T_CommentImage" Width="1.5" PointX="5.125" PointY="15.125" />
         <AssociationConnector Association="EchoShopModel.T_CommentT_CommentImage" />
+        <EntityTypeShape EntityType="EchoShopModel.T_CarouselFigure" Width="1.5" PointX="13.25" PointY="11.625" />
+        <AssociationConnector Association="EchoShopModel.T_CategoryT_CarouselFigure" />
+        <EntityTypeShape EntityType="EchoShopModel.T_ShoppingCart" Width="1.5" PointX="5" PointY="4.25" />
+        <AssociationConnector Association="EchoShopModel.T_UserBaseInfoT_ShoppingCart" />
+        <AssociationConnector Association="EchoShopModel.T_ProductsT_ShoppingCart" />
+        <AssociationConnector Association="EchoShopModel.T_ShoppingCartT_Attributes" ManuallyRouted="false" >
+        </AssociationConnector>
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

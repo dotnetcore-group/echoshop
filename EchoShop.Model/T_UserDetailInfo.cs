@@ -14,7 +14,7 @@ namespace EchoShop.Model
     
     public partial class T_UserDetailInfo
     {
-        public System.Guid F_Id { get; set; }
+        public int F_Id { get; set; }
         public string F_UNickName { get; set; }
         public Nullable<System.DateTime> F_UBirthday { get; set; }
         public string F_USex { get; set; }

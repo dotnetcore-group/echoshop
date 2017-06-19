@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/17/2017 16:05:44
+-- Date Created: 06/19/2017 12:42:23
 -- Generated from EDMX file: E:\WorkSpace\EchoShop\EchoShop.Model\EchoShopModel.edmx
 -- --------------------------------------------------
 
@@ -62,6 +62,15 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_T_ProductsT_Favorites]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[T_FavoritesSet] DROP CONSTRAINT [FK_T_ProductsT_Favorites];
 GO
+IF OBJECT_ID(N'[dbo].[FK_T_OrderInfoDeliveryInfo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[T_OrderInfoSet] DROP CONSTRAINT [FK_T_OrderInfoDeliveryInfo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_T_CommentT_OrderInfo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[T_CommentSet] DROP CONSTRAINT [FK_T_CommentT_OrderInfo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_T_CommentT_CommentImage]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[T_CommentImageSet] DROP CONSTRAINT [FK_T_CommentT_CommentImage];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -109,6 +118,12 @@ GO
 IF OBJECT_ID(N'[dbo].[T_FavoritesSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[T_FavoritesSet];
 GO
+IF OBJECT_ID(N'[dbo].[T_CommentSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[T_CommentSet];
+GO
+IF OBJECT_ID(N'[dbo].[T_CommentImageSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[T_CommentImageSet];
+GO
 IF OBJECT_ID(N'[dbo].[T_OrderInfoT_Attributes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[T_OrderInfoT_Attributes];
 GO
@@ -119,7 +134,7 @@ GO
 
 -- Creating table 'T_UserBaseInfoSet'
 CREATE TABLE [dbo].[T_UserBaseInfoSet] (
-    [F_UId] int IDENTITY(1,1) NOT NULL,
+    [F_UId] int IDENTITY(1000,1) NOT NULL,
     [F_UName] varchar(20)  NOT NULL,
     [F_UPwd] nchar(32)  NOT NULL,
     [F_UState] bit  NOT NULL,
@@ -129,7 +144,7 @@ GO
 
 -- Creating table 'T_UserDetailInfoSet'
 CREATE TABLE [dbo].[T_UserDetailInfoSet] (
-    [F_Id] uniqueidentifier  NOT NULL,
+    [F_Id] int IDENTITY(1,1) NOT NULL,
     [F_UNickName] nvarchar(20)  NOT NULL,
     [F_UBirthday] datetime  NULL,
     [F_USex] nchar(1)  NULL,
@@ -140,7 +155,7 @@ GO
 
 -- Creating table 'DeliveryInfoSet'
 CREATE TABLE [dbo].[DeliveryInfoSet] (
-    [F_DId] uniqueidentifier  NOT NULL,
+    [F_DId] uniqueidentifier  NOT NULL CONSTRAINT DF_DId DEFAULT (NEWID()),
     [F_DConsignee] nvarchar(10)  NOT NULL,
     [F_DAddress] nvarchar(max)  NOT NULL,
     [F_DTel] nvarchar(max)  NOT NULL,
@@ -151,12 +166,15 @@ GO
 
 -- Creating table 'T_OrderInfoSet'
 CREATE TABLE [dbo].[T_OrderInfoSet] (
-    [Id] uniqueidentifier  NOT NULL,
+    [Id] uniqueidentifier  NOT NULL CONSTRAINT DF_Id DEFAULT (NEWID()),
     [F_Quantity] nvarchar(max)  NOT NULL,
     [F_UnitPrice] real  NOT NULL,
+    [F_OrderTime] datetime  NOT NULL,
+    [F_OrderNumber] nvarchar(max)  NOT NULL,
+    [F_Remark] nvarchar(50)  NULL,
     [T_UserBaseInfo_F_UId] int  NOT NULL,
     [T_OrderStatus_Id] int  NOT NULL,
-    [T_Goods_F_Id] int  NOT NULL,
+    [T_Products_F_Id] int  NOT NULL,
     [DeliveryInfo_F_DId] uniqueidentifier  NOT NULL
 );
 GO
@@ -180,7 +198,7 @@ GO
 
 -- Creating table 'T_ProductsSet'
 CREATE TABLE [dbo].[T_ProductsSet] (
-    [F_Id] int IDENTITY(1,1) NOT NULL,
+    [F_Id] int IDENTITY(1000,1) NOT NULL,
     [F_Name] nvarchar(max)  NOT NULL,
     [F_Desc] nvarchar(max)  NOT NULL,
     [F_OriginalPrice] real  NOT NULL,
@@ -214,6 +232,9 @@ GO
 CREATE TABLE [dbo].[T_ProductAttrSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Price] real  NOT NULL,
+    [Stock] int  NOT NULL,
+    [Title] nvarchar(max)  NULL,
+    [Image] nvarchar(max)  NULL,
     [T_Products_F_Id] int  NOT NULL,
     [T_Attributes_AttrId] int  NOT NULL,
     [T_AttrValue_Id] int  NOT NULL
@@ -223,7 +244,8 @@ GO
 -- Creating table 'T_AttributesSet'
 CREATE TABLE [dbo].[T_AttributesSet] (
     [AttrId] int IDENTITY(1,1) NOT NULL,
-    [AttrName] nvarchar(max)  NOT NULL
+    [AttrName] nvarchar(max)  NOT NULL,
+    [T_ShoppingCart_Id] int  NOT NULL
 );
 GO
 
@@ -251,6 +273,43 @@ GO
 CREATE TABLE [dbo].[T_FavoritesSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [AddDate] datetime  NULL,
+    [T_UserBaseInfo_F_UId] int  NOT NULL,
+    [T_Products_F_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'T_CommentSet'
+CREATE TABLE [dbo].[T_CommentSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [CommentTime] datetime  NOT NULL,
+    [Content] nvarchar(max)  NOT NULL,
+    [T_OrderInfo_Id] uniqueidentifier  NOT NULL
+);
+GO
+
+-- Creating table 'T_CommentImageSet'
+CREATE TABLE [dbo].[T_CommentImageSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Url] nvarchar(max)  NOT NULL,
+    [T_Comment_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'T_CarouselFigureSet'
+CREATE TABLE [dbo].[T_CarouselFigureSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Redirect] nvarchar(max)  NOT NULL,
+    [Title] nvarchar(max)  NOT NULL,
+    [Image] nvarchar(max)  NOT NULL,
+    [T_Category_F_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'T_ShoppingCartSet'
+CREATE TABLE [dbo].[T_ShoppingCartSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [AddTime] datetime  NOT NULL,
+    [Count] nvarchar(max)  NOT NULL,
     [T_UserBaseInfo_F_UId] int  NOT NULL,
     [T_Products_F_Id] int  NOT NULL
 );
@@ -351,6 +410,30 @@ ADD CONSTRAINT [PK_T_FavoritesSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+-- Creating primary key on [Id] in table 'T_CommentSet'
+ALTER TABLE [dbo].[T_CommentSet]
+ADD CONSTRAINT [PK_T_CommentSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'T_CommentImageSet'
+ALTER TABLE [dbo].[T_CommentImageSet]
+ADD CONSTRAINT [PK_T_CommentImageSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'T_CarouselFigureSet'
+ALTER TABLE [dbo].[T_CarouselFigureSet]
+ADD CONSTRAINT [PK_T_CarouselFigureSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'T_ShoppingCartSet'
+ALTER TABLE [dbo].[T_ShoppingCartSet]
+ADD CONSTRAINT [PK_T_ShoppingCartSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
 -- Creating primary key on [T_OrderInfo_Id], [T_Attributes_AttrId] in table 'T_OrderInfoT_Attributes'
 ALTER TABLE [dbo].[T_OrderInfoT_Attributes]
 ADD CONSTRAINT [PK_T_OrderInfoT_Attributes]
@@ -436,10 +519,10 @@ ON [dbo].[T_ProductsSet]
     ([T_Category_F_Id]);
 GO
 
--- Creating foreign key on [T_Goods_F_Id] in table 'T_OrderInfoSet'
+-- Creating foreign key on [T_Products_F_Id] in table 'T_OrderInfoSet'
 ALTER TABLE [dbo].[T_OrderInfoSet]
 ADD CONSTRAINT [FK_T_OrderInfoT_Goods]
-    FOREIGN KEY ([T_Goods_F_Id])
+    FOREIGN KEY ([T_Products_F_Id])
     REFERENCES [dbo].[T_ProductsSet]
         ([F_Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -448,7 +531,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_T_OrderInfoT_Goods'
 CREATE INDEX [IX_FK_T_OrderInfoT_Goods]
 ON [dbo].[T_OrderInfoSet]
-    ([T_Goods_F_Id]);
+    ([T_Products_F_Id]);
 GO
 
 -- Creating foreign key on [T_Brand_Id] in table 'T_ProductsSet'
@@ -593,6 +676,96 @@ GO
 CREATE INDEX [IX_FK_T_OrderInfoDeliveryInfo]
 ON [dbo].[T_OrderInfoSet]
     ([DeliveryInfo_F_DId]);
+GO
+
+-- Creating foreign key on [T_OrderInfo_Id] in table 'T_CommentSet'
+ALTER TABLE [dbo].[T_CommentSet]
+ADD CONSTRAINT [FK_T_CommentT_OrderInfo]
+    FOREIGN KEY ([T_OrderInfo_Id])
+    REFERENCES [dbo].[T_OrderInfoSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_T_CommentT_OrderInfo'
+CREATE INDEX [IX_FK_T_CommentT_OrderInfo]
+ON [dbo].[T_CommentSet]
+    ([T_OrderInfo_Id]);
+GO
+
+-- Creating foreign key on [T_Comment_Id] in table 'T_CommentImageSet'
+ALTER TABLE [dbo].[T_CommentImageSet]
+ADD CONSTRAINT [FK_T_CommentT_CommentImage]
+    FOREIGN KEY ([T_Comment_Id])
+    REFERENCES [dbo].[T_CommentSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_T_CommentT_CommentImage'
+CREATE INDEX [IX_FK_T_CommentT_CommentImage]
+ON [dbo].[T_CommentImageSet]
+    ([T_Comment_Id]);
+GO
+
+-- Creating foreign key on [T_Category_F_Id] in table 'T_CarouselFigureSet'
+ALTER TABLE [dbo].[T_CarouselFigureSet]
+ADD CONSTRAINT [FK_T_CategoryT_CarouselFigure]
+    FOREIGN KEY ([T_Category_F_Id])
+    REFERENCES [dbo].[T_CategorySet]
+        ([F_Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_T_CategoryT_CarouselFigure'
+CREATE INDEX [IX_FK_T_CategoryT_CarouselFigure]
+ON [dbo].[T_CarouselFigureSet]
+    ([T_Category_F_Id]);
+GO
+
+-- Creating foreign key on [T_UserBaseInfo_F_UId] in table 'T_ShoppingCartSet'
+ALTER TABLE [dbo].[T_ShoppingCartSet]
+ADD CONSTRAINT [FK_T_UserBaseInfoT_ShoppingCart]
+    FOREIGN KEY ([T_UserBaseInfo_F_UId])
+    REFERENCES [dbo].[T_UserBaseInfoSet]
+        ([F_UId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_T_UserBaseInfoT_ShoppingCart'
+CREATE INDEX [IX_FK_T_UserBaseInfoT_ShoppingCart]
+ON [dbo].[T_ShoppingCartSet]
+    ([T_UserBaseInfo_F_UId]);
+GO
+
+-- Creating foreign key on [T_Products_F_Id] in table 'T_ShoppingCartSet'
+ALTER TABLE [dbo].[T_ShoppingCartSet]
+ADD CONSTRAINT [FK_T_ProductsT_ShoppingCart]
+    FOREIGN KEY ([T_Products_F_Id])
+    REFERENCES [dbo].[T_ProductsSet]
+        ([F_Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_T_ProductsT_ShoppingCart'
+CREATE INDEX [IX_FK_T_ProductsT_ShoppingCart]
+ON [dbo].[T_ShoppingCartSet]
+    ([T_Products_F_Id]);
+GO
+
+-- Creating foreign key on [T_ShoppingCart_Id] in table 'T_AttributesSet'
+ALTER TABLE [dbo].[T_AttributesSet]
+ADD CONSTRAINT [FK_T_ShoppingCartT_Attributes]
+    FOREIGN KEY ([T_ShoppingCart_Id])
+    REFERENCES [dbo].[T_ShoppingCartSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_T_ShoppingCartT_Attributes'
+CREATE INDEX [IX_FK_T_ShoppingCartT_Attributes]
+ON [dbo].[T_AttributesSet]
+    ([T_ShoppingCart_Id]);
 GO
 
 -- --------------------------------------------------

@@ -31,5 +31,6 @@ namespace EchoShop.Model
         public virtual ICollection<T_ProductAttr> T_ProductAttr { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<T_OrderInfo> T_OrderInfo { get; set; }
+        public virtual T_ShoppingCart T_ShoppingCart { get; set; }
     }
 }

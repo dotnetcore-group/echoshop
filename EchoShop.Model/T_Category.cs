@@ -20,6 +20,7 @@ namespace EchoShop.Model
             this.F_Id = 1000;
             this.F_ParentId = 0;
             this.T_Goods = new HashSet<T_Products>();
+            this.T_CarouselFigure = new HashSet<T_CarouselFigure>();
         }
     
         public int F_Id { get; set; }
@@ -30,5 +31,7 @@ namespace EchoShop.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<T_Products> T_Goods { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<T_CarouselFigure> T_CarouselFigure { get; set; }
     }
 }

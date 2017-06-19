@@ -157,8 +157,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BaseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
@@ -187,6 +189,20 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EchoShop.Common\EchoShop.Common.csproj">
+      <Project>{67204C34-5F49-4DB6-B305-76E03CA2AAC3}</Project>
+      <Name>EchoShop.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EchoShop.IServices\EchoShop.IServices.csproj">
+      <Project>{FC387404-B37D-4DA7-BD44-BFE32E34698E}</Project>
+      <Name>EchoShop.IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EchoShop.Model\EchoShop.Model.csproj">
+      <Project>{21EAC2A7-74B2-47D0-A254-FACDC5CA658D}</Project>
+      <Name>EchoShop.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

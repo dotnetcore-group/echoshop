@@ -20,6 +20,10 @@
     <EntitySet Name="T_AttrValueSet" EntityType="EchoShopModel.Store.T_AttrValueSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="T_FriendLinksSet" EntityType="EchoShopModel.Store.T_FriendLinksSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="T_FavoritesSet" EntityType="EchoShopModel.Store.T_FavoritesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_CommentSet" EntityType="EchoShopModel.Store.T_CommentSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_CommentImageSet" EntityType="EchoShopModel.Store.T_CommentImageSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_CarouselFigureSet" EntityType="EchoShopModel.Store.T_CarouselFigureSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_ShoppingCartSet" EntityType="EchoShopModel.Store.T_ShoppingCartSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="T_OrderInfoT_Attributes" EntityType="EchoShopModel.Store.T_OrderInfoT_Attributes" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="T_UserDetailInfoT_UserBaseInfo" Association="EchoShopModel.Store.T_UserDetailInfoT_UserBaseInfo">
       <End Role="T_UserDetailInfo" EntitySet="T_UserDetailInfoSet" />
@@ -85,6 +89,30 @@
       <End Role="T_OrderInfo" EntitySet="T_OrderInfoSet" />
       <End Role="DeliveryInfo" EntitySet="DeliveryInfoSet" />
     </AssociationSet>
+    <AssociationSet Name="T_CommentT_OrderInfo" Association="EchoShopModel.Store.T_CommentT_OrderInfo">
+      <End Role="T_Comment" EntitySet="T_CommentSet" />
+      <End Role="T_OrderInfo" EntitySet="T_OrderInfoSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_CommentT_CommentImage" Association="EchoShopModel.Store.T_CommentT_CommentImage">
+      <End Role="T_Comment" EntitySet="T_CommentSet" />
+      <End Role="T_CommentImage" EntitySet="T_CommentImageSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_CategoryT_CarouselFigure" Association="EchoShopModel.Store.T_CategoryT_CarouselFigure">
+      <End Role="T_Category" EntitySet="T_CategorySet" />
+      <End Role="T_CarouselFigure" EntitySet="T_CarouselFigureSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_UserBaseInfoT_ShoppingCart" Association="EchoShopModel.Store.T_UserBaseInfoT_ShoppingCart">
+      <End Role="T_UserBaseInfo" EntitySet="T_UserBaseInfoSet" />
+      <End Role="T_ShoppingCart" EntitySet="T_ShoppingCartSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_ProductsT_ShoppingCart" Association="EchoShopModel.Store.T_ProductsT_ShoppingCart">
+      <End Role="T_Products" EntitySet="T_ProductsSet" />
+      <End Role="T_ShoppingCart" EntitySet="T_ShoppingCartSet" />
+    </AssociationSet>
+    <AssociationSet Name="T_ShoppingCartT_Attributes" Association="EchoShopModel.Store.T_ShoppingCartT_Attributes">
+      <End Role="T_ShoppingCart" EntitySet="T_ShoppingCartSet" />
+      <End Role="T_Attributes" EntitySet="T_AttributesSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="T_UserBaseInfoSet">
     <Key>
@@ -100,7 +128,7 @@
     <Key>
       <PropertyRef Name="F_Id" />
     </Key>
-    <Property Name="F_Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="F_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="F_UNickName" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="F_UBirthday" Type="datetime" Nullable="true" />
     <Property Name="F_USex" Type="nchar" Nullable="true" MaxLength="1" />
@@ -125,9 +153,12 @@
     <Property Name="Id" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="F_Quantity" Type="nvarchar(max)" Nullable="false" />
     <Property Name="F_UnitPrice" Type="real" Nullable="false" DefaultValue="0" />
+    <Property Name="F_OrderTime" Type="datetime" Nullable="false" />
+    <Property Name="F_OrderNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="F_Remark" Type="nvarchar" Nullable="true" MaxLength="50" />
     <Property Name="T_UserBaseInfo_F_UId" Type="int" DefaultValue="10000" Nullable="false" />
     <Property Name="T_OrderStatus_Id" Type="int" Nullable="false" />
-    <Property Name="T_Goods_F_Id" Type="int" Nullable="false" />
+    <Property Name="T_Products_F_Id" Type="int" Nullable="false" />
     <Property Name="DeliveryInfo_F_DId" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <EntityType Name="T_OrderStatusSet">
@@ -141,7 +172,7 @@
     <Key>
       <PropertyRef Name="F_Id" />
     </Key>
-    <Property Name="F_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="F_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" DefaultValue="1000" />
     <Property Name="F_CategoryName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="F_OrderValue" Type="int" Nullable="true" />
     <Property Name="F_Icon" Type="nvarchar(max)" Nullable="true" />
@@ -160,7 +191,7 @@
     <Property Name="F_IsHot" Type="bit" Nullable="false" DefaultValue="false" />
     <Property Name="F_Img" Type="nvarchar(max)" Nullable="true" />
     <Property Name="F_AddDate" Type="datetime" Nullable="true" />
-    <Property Name="T_Category_F_Id" Type="int" Nullable="false" />
+    <Property Name="T_Category_F_Id" Type="int" DefaultValue="1000" Nullable="false" />
     <Property Name="T_Brand_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="T_AdminSet">
@@ -185,6 +216,9 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Price" Type="real" Nullable="false" DefaultValue="0" />
+    <Property Name="Stock" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="true" />
     <Property Name="T_Products_F_Id" Type="int" Nullable="false" />
     <Property Name="T_Attributes_AttrId" Type="int" Nullable="false" />
     <Property Name="T_AttrValue_Id" Type="int" Nullable="false" />
@@ -195,6 +229,7 @@
     </Key>
     <Property Name="AttrId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AttrName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="T_ShoppingCart_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="T_AttrValueSet">
     <Key>
@@ -222,6 +257,43 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AddDate" Type="datetime" Nullable="true" />
+    <Property Name="T_UserBaseInfo_F_UId" Type="int" DefaultValue="10000" Nullable="false" />
+    <Property Name="T_Products_F_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_CommentSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommentTime" Type="datetime" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="T_OrderInfo_Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_CommentImageSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="T_Comment_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_CarouselFigureSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Redirect" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="T_Category_F_Id" Type="int" DefaultValue="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_ShoppingCartSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AddTime" Type="datetime" Nullable="false" />
+    <Property Name="Count" Type="nvarchar(max)" Nullable="false" />
     <Property Name="T_UserBaseInfo_F_UId" Type="int" DefaultValue="10000" Nullable="false" />
     <Property Name="T_Products_F_Id" Type="int" Nullable="false" />
   </EntityType>
@@ -301,7 +373,7 @@
         <PropertyRef Name="F_Id" />
       </Principal>
       <Dependent Role="T_OrderInfo">
-        <PropertyRef Name="T_Goods_F_Id" />
+        <PropertyRef Name="T_Products_F_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -398,6 +470,78 @@
       </Principal>
       <Dependent Role="T_OrderInfo">
         <PropertyRef Name="DeliveryInfo_F_DId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_CommentT_OrderInfo">
+    <End Role="T_Comment" Type="EchoShopModel.Store.T_CommentSet" Multiplicity="*" />
+    <End Role="T_OrderInfo" Type="EchoShopModel.Store.T_OrderInfoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="T_OrderInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_Comment">
+        <PropertyRef Name="T_OrderInfo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_CommentT_CommentImage">
+    <End Role="T_Comment" Type="EchoShopModel.Store.T_CommentSet" Multiplicity="1" />
+    <End Role="T_CommentImage" Type="EchoShopModel.Store.T_CommentImageSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Comment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_CommentImage">
+        <PropertyRef Name="T_Comment_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_CategoryT_CarouselFigure">
+    <End Role="T_Category" Type="EchoShopModel.Store.T_CategorySet" Multiplicity="1" />
+    <End Role="T_CarouselFigure" Type="EchoShopModel.Store.T_CarouselFigureSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Category">
+        <PropertyRef Name="F_Id" />
+      </Principal>
+      <Dependent Role="T_CarouselFigure">
+        <PropertyRef Name="T_Category_F_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_UserBaseInfoT_ShoppingCart">
+    <End Role="T_UserBaseInfo" Type="EchoShopModel.Store.T_UserBaseInfoSet" Multiplicity="1" />
+    <End Role="T_ShoppingCart" Type="EchoShopModel.Store.T_ShoppingCartSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_UserBaseInfo">
+        <PropertyRef Name="F_UId" />
+      </Principal>
+      <Dependent Role="T_ShoppingCart">
+        <PropertyRef Name="T_UserBaseInfo_F_UId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_ProductsT_ShoppingCart">
+    <End Role="T_Products" Type="EchoShopModel.Store.T_ProductsSet" Multiplicity="1" />
+    <End Role="T_ShoppingCart" Type="EchoShopModel.Store.T_ShoppingCartSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Products">
+        <PropertyRef Name="F_Id" />
+      </Principal>
+      <Dependent Role="T_ShoppingCart">
+        <PropertyRef Name="T_Products_F_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_ShoppingCartT_Attributes">
+    <End Role="T_ShoppingCart" Type="EchoShopModel.Store.T_ShoppingCartSet" Multiplicity="1" />
+    <End Role="T_Attributes" Type="EchoShopModel.Store.T_AttributesSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_ShoppingCart">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="T_Attributes">
+        <PropertyRef Name="T_ShoppingCart_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -514,6 +658,24 @@
             <End Role="T_Comment" EntitySet="T_CommentSet" />
             <End Role="T_CommentImage" EntitySet="T_CommentImageSet" />
           </AssociationSet>
+          <EntitySet Name="T_CarouselFigureSet" EntityType="EchoShopModel.T_CarouselFigure" />
+          <AssociationSet Name="T_CategoryT_CarouselFigure" Association="EchoShopModel.T_CategoryT_CarouselFigure">
+            <End Role="T_Category" EntitySet="T_CategorySet" />
+            <End Role="T_CarouselFigure" EntitySet="T_CarouselFigureSet" />
+          </AssociationSet>
+          <EntitySet Name="T_ShoppingCartSet" EntityType="EchoShopModel.T_ShoppingCart" />
+          <AssociationSet Name="T_UserBaseInfoT_ShoppingCart" Association="EchoShopModel.T_UserBaseInfoT_ShoppingCart">
+            <End Role="T_UserBaseInfo" EntitySet="T_UserBaseInfoSet" />
+            <End Role="T_ShoppingCart" EntitySet="T_ShoppingCartSet" />
+          </AssociationSet>
+          <AssociationSet Name="T_ProductsT_ShoppingCart" Association="EchoShopModel.T_ProductsT_ShoppingCart">
+            <End Role="T_Products" EntitySet="T_ProductsSet" />
+            <End Role="T_ShoppingCart" EntitySet="T_ShoppingCartSet" />
+          </AssociationSet>
+          <AssociationSet Name="T_ShoppingCartT_Attributes" Association="EchoShopModel.T_ShoppingCartT_Attributes">
+            <End Role="T_ShoppingCart" EntitySet="T_ShoppingCartSet" />
+            <End Role="T_Attributes" EntitySet="T_AttributesSet" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="T_UserBaseInfo">
           <Key>
@@ -528,12 +690,13 @@
           <NavigationProperty Name="DeliveryInfo" Relationship="EchoShopModel.DeliveryInfoT_UserBaseInfo" FromRole="T_UserBaseInfo" ToRole="DeliveryInfo" />
           <NavigationProperty Name="T_OrderInfo" Relationship="EchoShopModel.T_OrderInfoT_UserBaseInfo" FromRole="T_UserBaseInfo" ToRole="T_OrderInfo" />
           <NavigationProperty Name="T_Favorites" Relationship="EchoShopModel.T_FavoritesT_UserBaseInfo" FromRole="T_UserBaseInfo" ToRole="T_Favorites" />
+          <NavigationProperty Name="T_ShoppingCart" Relationship="EchoShopModel.T_UserBaseInfoT_ShoppingCart" FromRole="T_UserBaseInfo" ToRole="T_ShoppingCart" />
         </EntityType>
         <EntityType Name="T_UserDetailInfo">
           <Key>
             <PropertyRef Name="F_Id" />
           </Key>
-          <Property Name="F_Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="F_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="F_UNickName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="F_UBirthday" Type="DateTime" Nullable="true" Precision="3" />
           <Property Name="F_USex" Type="String" Nullable="true" FixedLength="true" MaxLength="1" Unicode="true" />
@@ -603,6 +766,7 @@
           <Property Name="F_Icon" Type="String" Nullable="true" />
           <NavigationProperty Name="T_Goods" Relationship="EchoShopModel.T_GoodsT_Category" FromRole="T_Category" ToRole="T_Goods" />
           <Property Name="F_ParentId" Type="Int32" Nullable="false" DefaultValue="0" />
+          <NavigationProperty Name="T_CarouselFigure" Relationship="EchoShopModel.T_CategoryT_CarouselFigure" FromRole="T_Category" ToRole="T_CarouselFigure" />
         </EntityType>
         <EntityType Name="T_Products">
           <Key>
@@ -622,6 +786,7 @@
           <Property Name="F_AddDate" Type="DateTime" Nullable="true" />
           <NavigationProperty Name="T_ProductAttr" Relationship="EchoShopModel.T_ProductAttrT_Products" FromRole="T_Products" ToRole="T_ProductAttr" />
           <NavigationProperty Name="T_Favorites" Relationship="EchoShopModel.T_ProductsT_Favorites" FromRole="T_Products" ToRole="T_Favorites" />
+          <NavigationProperty Name="T_ShoppingCart" Relationship="EchoShopModel.T_ProductsT_ShoppingCart" FromRole="T_Products" ToRole="T_ShoppingCart" />
         </EntityType>
         <Association Name="T_GoodsT_Category">
           <End Type="EchoShopModel.T_Products" Role="T_Goods" Multiplicity="*" />
@@ -678,6 +843,7 @@
           <NavigationProperty Name="T_AttrValue" Relationship="EchoShopModel.T_AttrValueT_Attributes" FromRole="T_Attributes" ToRole="T_AttrValue" />
           <NavigationProperty Name="T_ProductAttr" Relationship="EchoShopModel.T_AttributesT_ProductAttr" FromRole="T_Attributes" ToRole="T_ProductAttr" />
           <NavigationProperty Name="T_OrderInfo" Relationship="EchoShopModel.T_OrderInfoT_Attributes" FromRole="T_Attributes" ToRole="T_OrderInfo" />
+          <NavigationProperty Name="T_ShoppingCart" Relationship="EchoShopModel.T_ShoppingCartT_Attributes" FromRole="T_Attributes" ToRole="T_ShoppingCart" />
         </EntityType>
         <EntityType Name="T_AttrValue">
           <Key>
@@ -738,6 +904,9 @@
           <End Type="EchoShopModel.DeliveryInfo" Role="DeliveryInfo" Multiplicity="1" />
         </Association>
         <EntityType Name="T_Comment">
+          <Documentation>
+            <LongDescription>评论表</LongDescription>
+          </Documentation>
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -762,6 +931,46 @@
         <Association Name="T_CommentT_CommentImage">
           <End Type="EchoShopModel.T_Comment" Role="T_Comment" Multiplicity="1" />
           <End Type="EchoShopModel.T_CommentImage" Role="T_CommentImage" Multiplicity="*" />
+        </Association>
+        <EntityType Name="T_CarouselFigure">
+          <Documentation>
+            <LongDescription>轮播图数据</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Redirect" Type="String" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Image" Type="String" Nullable="false" />
+          <NavigationProperty Name="T_Category" Relationship="EchoShopModel.T_CategoryT_CarouselFigure" FromRole="T_CarouselFigure" ToRole="T_Category" />
+        </EntityType>
+        <Association Name="T_CategoryT_CarouselFigure">
+          <End Type="EchoShopModel.T_Category" Role="T_Category" Multiplicity="1" />
+          <End Type="EchoShopModel.T_CarouselFigure" Role="T_CarouselFigure" Multiplicity="*" />
+        </Association>
+        <EntityType Name="T_ShoppingCart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="T_UserBaseInfo" Relationship="EchoShopModel.T_UserBaseInfoT_ShoppingCart" FromRole="T_ShoppingCart" ToRole="T_UserBaseInfo" />
+          <NavigationProperty Name="T_Products" Relationship="EchoShopModel.T_ProductsT_ShoppingCart" FromRole="T_ShoppingCart" ToRole="T_Products" />
+          <Property Name="AddTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="T_Attributes" Relationship="EchoShopModel.T_ShoppingCartT_Attributes" FromRole="T_ShoppingCart" ToRole="T_Attributes" />
+          <Property Name="Count" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="T_UserBaseInfoT_ShoppingCart">
+          <End Type="EchoShopModel.T_UserBaseInfo" Role="T_UserBaseInfo" Multiplicity="1" />
+          <End Type="EchoShopModel.T_ShoppingCart" Role="T_ShoppingCart" Multiplicity="*" />
+        </Association>
+        <Association Name="T_ProductsT_ShoppingCart">
+          <End Type="EchoShopModel.T_Products" Role="T_Products" Multiplicity="1" />
+          <End Type="EchoShopModel.T_ShoppingCart" Role="T_ShoppingCart" Multiplicity="*" />
+        </Association>
+        <Association Name="T_ShoppingCartT_Attributes">
+          <End Type="EchoShopModel.T_ShoppingCart" Role="T_ShoppingCart" Multiplicity="1" />
+          <End Type="EchoShopModel.T_Attributes" Role="T_Attributes" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -808,6 +1017,9 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="F_Quantity" ColumnName="F_Quantity" />
           <ScalarProperty Name="F_UnitPrice" ColumnName="F_UnitPrice" />
+          <ScalarProperty Name="F_OrderTime" ColumnName="F_OrderTime" />
+          <ScalarProperty Name="F_OrderNumber" ColumnName="F_OrderNumber" />
+          <ScalarProperty Name="F_Remark" ColumnName="F_Remark" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -868,6 +1080,9 @@
         <MappingFragment StoreEntitySet="T_ProductAttrSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -905,6 +1120,42 @@
         <MappingFragment StoreEntitySet="T_FavoritesSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_CommentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_Comment)">
+        <MappingFragment StoreEntitySet="T_CommentSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CommentTime" ColumnName="CommentTime" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_CommentImageSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_CommentImage)">
+        <MappingFragment StoreEntitySet="T_CommentImageSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_CarouselFigureSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_CarouselFigure)">
+        <MappingFragment StoreEntitySet="T_CarouselFigureSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Redirect" ColumnName="Redirect" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ShoppingCartSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EchoShopModel.T_ShoppingCart)">
+        <MappingFragment StoreEntitySet="T_ShoppingCartSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -950,7 +1201,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="T_OrderInfoT_Goods" TypeName="EchoShopModel.T_OrderInfoT_Goods" StoreEntitySet="T_OrderInfoSet">
       <EndProperty Name="T_Goods">
-        <ScalarProperty Name="F_Id" ColumnName="T_Goods_F_Id" />
+        <ScalarProperty Name="F_Id" ColumnName="T_Products_F_Id" />
       </EndProperty>
       <EndProperty Name="T_OrderInfo">
         <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1026,6 +1277,54 @@
       </EndProperty>
       <EndProperty Name="T_OrderInfo">
         <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_CommentT_OrderInfo" TypeName="EchoShopModel.T_CommentT_OrderInfo" StoreEntitySet="T_CommentSet">
+      <EndProperty Name="T_OrderInfo">
+        <ScalarProperty Name="Id" ColumnName="T_OrderInfo_Id" />
+      </EndProperty>
+      <EndProperty Name="T_Comment">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_CommentT_CommentImage" TypeName="EchoShopModel.T_CommentT_CommentImage" StoreEntitySet="T_CommentImageSet">
+      <EndProperty Name="T_Comment">
+        <ScalarProperty Name="Id" ColumnName="T_Comment_Id" />
+      </EndProperty>
+      <EndProperty Name="T_CommentImage">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_CategoryT_CarouselFigure" TypeName="EchoShopModel.T_CategoryT_CarouselFigure" StoreEntitySet="T_CarouselFigureSet">
+      <EndProperty Name="T_Category">
+        <ScalarProperty Name="F_Id" ColumnName="T_Category_F_Id" />
+      </EndProperty>
+      <EndProperty Name="T_CarouselFigure">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_UserBaseInfoT_ShoppingCart" TypeName="EchoShopModel.T_UserBaseInfoT_ShoppingCart" StoreEntitySet="T_ShoppingCartSet">
+      <EndProperty Name="T_UserBaseInfo">
+        <ScalarProperty Name="F_UId" ColumnName="T_UserBaseInfo_F_UId" />
+      </EndProperty>
+      <EndProperty Name="T_ShoppingCart">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_ProductsT_ShoppingCart" TypeName="EchoShopModel.T_ProductsT_ShoppingCart" StoreEntitySet="T_ShoppingCartSet">
+      <EndProperty Name="T_Products">
+        <ScalarProperty Name="F_Id" ColumnName="T_Products_F_Id" />
+      </EndProperty>
+      <EndProperty Name="T_ShoppingCart">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="T_ShoppingCartT_Attributes" TypeName="EchoShopModel.T_ShoppingCartT_Attributes" StoreEntitySet="T_AttributesSet">
+      <EndProperty Name="T_ShoppingCart">
+        <ScalarProperty Name="Id" ColumnName="T_ShoppingCart_Id" />
+      </EndProperty>
+      <EndProperty Name="T_Attributes">
+        <ScalarProperty Name="AttrId" ColumnName="AttrId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

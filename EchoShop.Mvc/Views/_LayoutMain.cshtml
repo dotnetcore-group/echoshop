@@ -10,9 +10,10 @@
     <title>@ViewBag.Title</title>
     <link href="~/Content/style/base.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Content/style/bannerList.css" type="text/css" />
-    @RenderSection("style",false)
+    @RenderSection("style", false)
 </head>
 <body>
+
     <header class="g-header">
         <div class="nav-bar">
             <nav class="g-nav" id="topNav">
@@ -34,71 +35,114 @@
                         <a class="tab-logo" href="/" title="回音优选" target="_top"></a>
                         <div class="tab-inner">
                             <ul class="tab-nav">
-                                <li class="nav-item first active">
-                                    <a href="" class="topLevel">首页</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="topLevel">居家</a>
-                                    <div class="nav-down">
-                                        <div class="nav-cateCard">
-                                            <ul class="card-list">
-                                                <li class="item">
-                                                    <a href="">
-                                                        <span class="item-icon"></span>
-                                                        夏凉
-                                                    </a>
+
+
+                                @{
+
+                                    var categories = ViewData["Categories"] as List<EchoShop.Model.T_Category>;
+
+                                    if (categories.Count > 0)
+                                    {
+                                        foreach (var item in categories)
+                                        {
+                                            if (item.F_ParentId == 0)
+                                            {
+                                                var childCates = categories.Where(c => c.F_ParentId == item.F_Id).ToList();
+                                                <li class="nav-item">
+                                                    @Html.ActionLink(item.F_CategoryName, "list", "item", new { id = item.F_Id }, new { @class = "topLevel" })
+
+                                                    @if (childCates.Count > 0)
+                                                    {
+                                                        <div class="nav-down">
+                                                            <div class="nav-cateCard">
+                                                                <ul class="card-list">
+                                                                    @foreach (var childItem in childCates)
+                                                                    {
+                                                                        <li class="item">
+                                                                            <a href="/item/list/@childItem.F_Id">
+                                                                                <span class="item-icon"></span>
+                                                                                @childItem.F_CategoryName
+                                                                            </a>
+                                                                        </li>
+                                                                    }
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    }
                                                 </li>
-                                                <li class="item"><a href="">被枕</a></li>
-                                                <li class="item"><a href="">夏凉</a></li>
-                                                <li class="item"><a href="">被枕</a></li>
-                                                <li class="item"><a href="">夏凉</a></li>
-                                                <li class="item"><a href="">被枕</a></li>
-                                                <li class="item"><a href="">夏凉</a></li>
-                                                <li class="item"><a href="">被枕</a></li>
-                                                <li class="item"><a href="">夏凉</a></li>
-                                                <li class="item"><a href="">被枕</a></li>
-                                                <li class="item"><a href="">夏凉</a></li>
-                                                <li class="item"><a href="">被枕</a></li>
-                                            </ul>
+                                            }
+                                        }
+                                    }
+                                }
+
+
+
+                                @*<li class="nav-item first active">
+                                        <a href="" class="topLevel">首页</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="topLevel">居家</a>
+                                        <div class="nav-down">
+                                            <div class="nav-cateCard">
+                                                <ul class="card-list">
+                                                    <li class="item">
+                                                        <a href="">
+                                                            <span class="item-icon"></span>
+                                                            夏凉
+                                                        </a>
+                                                    </li>
+                                                    <li class="item"><a href="">被枕</a></li>
+                                                    <li class="item"><a href="">夏凉</a></li>
+                                                    <li class="item"><a href="">被枕</a></li>
+                                                    <li class="item"><a href="">夏凉</a></li>
+                                                    <li class="item"><a href="">被枕</a></li>
+                                                    <li class="item"><a href="">夏凉</a></li>
+                                                    <li class="item"><a href="">被枕</a></li>
+                                                    <li class="item"><a href="">夏凉</a></li>
+                                                    <li class="item"><a href="">被枕</a></li>
+                                                    <li class="item"><a href="">夏凉</a></li>
+                                                    <li class="item"><a href="">被枕</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="nav-item"><a href="" class="topLevel">餐厨</a></li>
-                                <li class="nav-item"><a href="" class="topLevel">配件</a></li>
-                                <li class="nav-item"><a href="" class="topLevel">服装</a></li>
-                                <li class="nav-item">
-                                    <a href="" class="topLevel">洗护</a>
-                                    <div class="nav-down">
-                                        <div class="nav-cateCard">
-                                            <ul class="card-list">
-                                                <li class="item">
-                                                    <a href="">
-                                                        <span class="item-icon"></span>
-                                                        夏凉
-                                                    </a>
-                                                </li>
-                                                <li class="item"><a href="">被枕</a></li>
-                                                <li class="item"><a href="">夏凉</a></li>
-                                                <li class="item"><a href="">被枕</a></li>
-                                                <li class="item"><a href="">夏凉</a></li>
-                                                <li class="item"><a href="">被枕</a></li>
-                                                <li class="item"><a href="">夏凉</a></li>
-                                                <li class="item"><a href="">被枕</a></li>
-                                                <li class="item"><a href="">夏凉</a></li>
-                                                <li class="item"><a href="">被枕</a></li>
-                                                <li class="item"><a href="">夏凉</a></li>
-                                                <li class="item"><a href="">被枕</a></li>
-                                            </ul>
+                                    </li>
+                                    <li class="nav-item"><a href="" class="topLevel">餐厨</a></li>
+                                    <li class="nav-item"><a href="" class="topLevel">配件</a></li>
+                                    <li class="nav-item"><a href="" class="topLevel">服装</a></li>
+                                    <li class="nav-item">
+                                        <a href="" class="topLevel">洗护</a>
+                                        <div class="nav-down">
+                                            <div class="nav-cateCard">
+                                                <ul class="card-list">
+                                                    <li class="item">
+                                                        <a href="">
+                                                            <span class="item-icon"></span>
+                                                            夏凉
+                                                        </a>
+                                                    </li>
+                                                    <li class="item"><a href="">被枕</a></li>
+                                                    <li class="item"><a href="">夏凉</a></li>
+                                                    <li class="item"><a href="">被枕</a></li>
+                                                    <li class="item"><a href="">夏凉</a></li>
+                                                    <li class="item"><a href="">被枕</a></li>
+                                                    <li class="item"><a href="">夏凉</a></li>
+                                                    <li class="item"><a href="">被枕</a></li>
+                                                    <li class="item"><a href="">夏凉</a></li>
+                                                    <li class="item"><a href="">被枕</a></li>
+                                                    <li class="item"><a href="">夏凉</a></li>
+                                                    <li class="item"><a href="">被枕</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="nav-item"><a href="" class="topLevel">婴童</a></li>
-                                <li class="nav-item"><a href="" class="topLevel">杂货</a></li>
-                                <li class="nav-item"><a href="" class="topLevel">饮食</a></li>
-                                <li class="nav-item"><a href="" class="topLevel">志趣</a></li>
+                                    </li>
+                                    <li class="nav-item"><a href="" class="topLevel">婴童</a></li>
+                                    <li class="nav-item"><a href="" class="topLevel">杂货</a></li>
+                                    <li class="nav-item"><a href="" class="topLevel">饮食</a></li>
+                                    <li class="nav-item"><a href="" class="topLevel">志趣</a></li>*@
 
 
                             </ul>
+
                         </div>
                     </div>
 
@@ -110,68 +154,103 @@
 
                 <ul class="tab-nav">
                     <a class="tab-logo-fixed" href="/" title="回音优选" target="_top"></a>
-                    <li class="nav-item first active">
-                        <a href="" class="topLevel">首页</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="topLevel">居家</a>
-                        <div class="nav-down">
-                            <div class="nav-cateCard">
-                                <ul class="card-list">
-                                    <li class="item">
-                                        <a href="">
-                                            <span class="item-icon"></span>
-                                            夏凉
-                                        </a>
+                    @{
+                        if (categories.Count > 0)
+                        {
+                            foreach (var item in categories)
+                            {
+                                if (item.F_ParentId == 0)
+                                {
+                                    var childCates = categories.Where(c => c.F_ParentId == item.F_Id).ToList();
+                                    <li class="nav-item">
+                                        @Html.ActionLink(item.F_CategoryName, "list", "item", new { id = item.F_Id }, new { @class = "topLevel" })
+
+                                        @if (childCates.Count > 0)
+                                        {
+                                            <div class="nav-down">
+                                                <div class="nav-cateCard">
+                                                    <ul class="card-list">
+                                                        @foreach (var childItem in childCates)
+                                                        {
+                                                            <li class="item">
+                                                                <a href="/item/list/@childItem.F_Id">
+                                                                    <span class="item-icon"></span>
+                                                                    @childItem.F_CategoryName
+                                                                </a>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        }
                                     </li>
-                                    <li class="item"><a href="">被枕</a></li>
-                                    <li class="item"><a href="">夏凉</a></li>
-                                    <li class="item"><a href="">被枕</a></li>
-                                    <li class="item"><a href="">夏凉</a></li>
-                                    <li class="item"><a href="">被枕</a></li>
-                                    <li class="item"><a href="">夏凉</a></li>
-                                    <li class="item"><a href="">被枕</a></li>
-                                    <li class="item"><a href="">夏凉</a></li>
-                                    <li class="item"><a href="">被枕</a></li>
-                                    <li class="item"><a href="">夏凉</a></li>
-                                    <li class="item"><a href="">被枕</a></li>
-                                </ul>
+                                }
+                            }
+                        }
+                    }
+
+                    @*<li class="nav-item first active">
+                            <a href="" class="topLevel">首页</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="topLevel">居家</a>
+                            <div class="nav-down">
+                                <div class="nav-cateCard">
+                                    <ul class="card-list">
+                                        <li class="item">
+                                            <a href="">
+                                                <span class="item-icon"></span>
+                                                夏凉
+                                            </a>
+                                        </li>
+                                        <li class="item"><a href="">被枕</a></li>
+                                        <li class="item"><a href="">夏凉</a></li>
+                                        <li class="item"><a href="">被枕</a></li>
+                                        <li class="item"><a href="">夏凉</a></li>
+                                        <li class="item"><a href="">被枕</a></li>
+                                        <li class="item"><a href="">夏凉</a></li>
+                                        <li class="item"><a href="">被枕</a></li>
+                                        <li class="item"><a href="">夏凉</a></li>
+                                        <li class="item"><a href="">被枕</a></li>
+                                        <li class="item"><a href="">夏凉</a></li>
+                                        <li class="item"><a href="">被枕</a></li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="nav-item"><a href="" class="topLevel">餐厨</a></li>
-                    <li class="nav-item"><a href="" class="topLevel">配件</a></li>
-                    <li class="nav-item"><a href="" class="topLevel">服装</a></li>
-                    <li class="nav-item">
-                        <a href="" class="topLevel">洗护</a>
-                        <div class="nav-down">
-                            <div class="nav-cateCard">
-                                <ul class="card-list">
-                                    <li class="item">
-                                        <a href="">
-                                            <span class="item-icon"></span>
-                                            夏凉
-                                        </a>
-                                    </li>
-                                    <li class="item"><a href="">被枕</a></li>
-                                    <li class="item"><a href="">夏凉</a></li>
-                                    <li class="item"><a href="">被枕</a></li>
-                                    <li class="item"><a href="">夏凉</a></li>
-                                    <li class="item"><a href="">被枕</a></li>
-                                    <li class="item"><a href="">夏凉</a></li>
-                                    <li class="item"><a href="">被枕</a></li>
-                                    <li class="item"><a href="">夏凉</a></li>
-                                    <li class="item"><a href="">被枕</a></li>
-                                    <li class="item"><a href="">夏凉</a></li>
-                                    <li class="item"><a href="">被枕</a></li>
-                                </ul>
+                        </li>
+                        <li class="nav-item"><a href="" class="topLevel">餐厨</a></li>
+                        <li class="nav-item"><a href="" class="topLevel">配件</a></li>
+                        <li class="nav-item"><a href="" class="topLevel">服装</a></li>
+                        <li class="nav-item">
+                            <a href="" class="topLevel">洗护</a>
+                            <div class="nav-down">
+                                <div class="nav-cateCard">
+                                    <ul class="card-list">
+                                        <li class="item">
+                                            <a href="">
+                                                <span class="item-icon"></span>
+                                                夏凉
+                                            </a>
+                                        </li>
+                                        <li class="item"><a href="">被枕</a></li>
+                                        <li class="item"><a href="">夏凉</a></li>
+                                        <li class="item"><a href="">被枕</a></li>
+                                        <li class="item"><a href="">夏凉</a></li>
+                                        <li class="item"><a href="">被枕</a></li>
+                                        <li class="item"><a href="">夏凉</a></li>
+                                        <li class="item"><a href="">被枕</a></li>
+                                        <li class="item"><a href="">夏凉</a></li>
+                                        <li class="item"><a href="">被枕</a></li>
+                                        <li class="item"><a href="">夏凉</a></li>
+                                        <li class="item"><a href="">被枕</a></li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="nav-item"><a href="" class="topLevel">婴童</a></li>
-                    <li class="nav-item"><a href="" class="topLevel">杂货</a></li>
-                    <li class="nav-item"><a href="" class="topLevel">饮食</a></li>
-                    <li class="nav-item"><a href="" class="topLevel">志趣</a></li>
+                        </li>
+                        <li class="nav-item"><a href="" class="topLevel">婴童</a></li>
+                        <li class="nav-item"><a href="" class="topLevel">杂货</a></li>
+                        <li class="nav-item"><a href="" class="topLevel">饮食</a></li>
+                        <li class="nav-item"><a href="" class="topLevel">志趣</a></li>*@
                 </ul>
             </div>
         </div>
@@ -234,6 +313,12 @@
     <script type="text/javascript" src="~/Content/script/base.js"></script>
     <script type="text/javascript" src="~/Content/script/bannerList.js"></script>
     @RenderSection("script", false)
+    <script>
+        $(function () {
+            $($(".tab-nav .nav-item")[0]).addClass("first active");
+            $($(".fixed-nav .nav-item")[0]).addClass("first active");
+        })
+    </script>
 </body>
 </html>
 

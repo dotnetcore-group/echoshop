@@ -82,6 +82,9 @@
     <Compile Include="T_Brand.cs">
       <DependentUpon>EchoShopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="T_CarouselFigure.cs">
+      <DependentUpon>EchoShopModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="T_Category.cs">
       <DependentUpon>EchoShopModel.tt</DependentUpon>
     </Compile>
@@ -107,6 +110,9 @@
       <DependentUpon>EchoShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="T_Products.cs">
+      <DependentUpon>EchoShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_ShoppingCart.cs">
       <DependentUpon>EchoShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="T_UserBaseInfo.cs">
