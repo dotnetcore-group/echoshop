@@ -26,6 +26,7 @@ namespace EchoShop.Model
         public float F_UnitPrice { get; set; }
         public System.DateTime F_OrderTime { get; set; }
         public string F_OrderNumber { get; set; }
+        public string F_Remark { get; set; }
     
         public virtual T_UserBaseInfo T_UserBaseInfo { get; set; }
         public virtual T_OrderStatus T_OrderStatus { get; set; }

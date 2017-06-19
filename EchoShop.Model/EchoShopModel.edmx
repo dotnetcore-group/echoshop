@@ -575,6 +575,7 @@
           <Property Name="F_OrderTime" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="T_Comment" Relationship="EchoShopModel.T_CommentT_OrderInfo" FromRole="T_OrderInfo" ToRole="T_Comment" />
           <Property Name="F_OrderNumber" Type="String" Nullable="false" />
+          <Property Name="F_Remark" Type="String" Nullable="true" MaxLength="50" />
         </EntityType>
         <Association Name="T_OrderInfoT_UserBaseInfo">
           <End Type="EchoShopModel.T_OrderInfo" Role="T_OrderInfo" Multiplicity="*" />
